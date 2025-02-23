@@ -135,6 +135,15 @@
     <ClCompile Include="juego.cpp" />
     <ClCompile Include="tablero.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="celda.h" />
+    <ClInclude Include="inputOutput.h" />
+    <ClInclude Include="juego.h" />
+    <ClInclude Include="listaPosiciones.h" />
+    <ClInclude Include="listaUndo.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="tablero.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
