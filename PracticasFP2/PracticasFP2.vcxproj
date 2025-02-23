@@ -127,7 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="inputOutput.cpp" />
+    <ClCompile Include="listaPosiciones.cpp" />
+    <ClCompile Include="listaUndo.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="celda.cpp" />
+    <ClCompile Include="juego.cpp" />
+    <ClCompile Include="tablero.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
