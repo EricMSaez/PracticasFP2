@@ -1,5 +1,5 @@
-#ifndef listaUndo.h
-#define listaUndo.h
+#ifndef listaUndo_h
+#define listaUndo_h
 
 #include <iostream>
 #include "listaPosiciones.h" //Incluimos el header "listaPosiciones.h" para poder usar tListaPosiciones

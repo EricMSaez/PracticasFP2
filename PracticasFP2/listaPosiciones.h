@@ -1,5 +1,5 @@
-#ifndef listaPosiciones.h
-#define listaPosiciones.h
+#ifndef listaPosiciones_h
+#define listaPosiciones_h
 
 #include <iostream>
 using namespace std;

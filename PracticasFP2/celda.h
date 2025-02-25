@@ -1,5 +1,5 @@
-#ifndef celda.h
-#define celda.h
+#ifndef celda_h
+#define celda_h
 
 #include <iostream>
 using namespace std;
@@ -12,5 +12,11 @@ typedef struct {
 	int numero;
 	bool marcada;
 } tCelda;
+
+void inicializar(tCelda Celda);
+
+tEstado dame_estado(tCelda Celda);
+
+int dame_numero(tCelda Celda);
 
 #endif

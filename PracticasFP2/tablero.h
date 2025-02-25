@@ -1,5 +1,5 @@
-#ifndef tablero.h
-#define tablero.h
+#ifndef tablero_h
+#define tablero_h
 
 #include <iostream>
 #include "celda.h" //Incluimos el header "celda.h" para poder usar tCelda
