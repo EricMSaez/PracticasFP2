@@ -1,3 +1,6 @@
+#ifndef listaPosiciones.h
+#define listaPosiciones.h
+
 #include <iostream>
 using namespace std;
 
@@ -11,3 +14,5 @@ typedef struct {
 	tPosicion lista[MAX_LISTA];
 	int cont;
 } tListaPosiciones;
+
+#endif

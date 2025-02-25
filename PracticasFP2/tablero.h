@@ -1,3 +1,6 @@
+#ifndef tablero.h
+#define tablero.h
+
 #include <iostream>
 #include "celda.h" //Incluimos el header "celda.h" para poder usar tCelda
 using namespace std;
@@ -10,3 +13,5 @@ typedef struct {
 	int nFils, nCols;
 	tCelda datos[MAX_FILS][MAX_COLS];
 } tTablero;
+
+#endif

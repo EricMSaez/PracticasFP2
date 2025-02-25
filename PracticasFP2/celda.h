@@ -1,3 +1,6 @@
+#ifndef celda.h
+#define celda.h
+
 #include <iostream>
 using namespace std;
 
@@ -10,3 +13,4 @@ typedef struct {
 	bool marcada;
 } tCelda;
 
+#endif

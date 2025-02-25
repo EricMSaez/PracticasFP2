@@ -1,3 +1,6 @@
+#ifndef juego.h
+#define juego.h
+
 #include <iostream>
 #include "tablero.h" //Incluimos el header "tablero.h" para poder usar tTablero
 using namespace std;
@@ -9,3 +12,5 @@ typedef struct {
 	int num_minas;
 	int num_descubiertas;
 } tJuego;
+
+#endif
