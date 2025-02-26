@@ -127,12 +127,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="celda.cpp" />
     <ClCompile Include="inputOutput.cpp" />
+    <ClCompile Include="juego.cpp" />
     <ClCompile Include="listaPosiciones.cpp" />
     <ClCompile Include="listaUndo.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="celda.cpp" />
-    <ClCompile Include="juego.cpp" />
     <ClCompile Include="tablero.cpp" />
   </ItemGroup>
   <ItemGroup>

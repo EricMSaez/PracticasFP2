@@ -15,13 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="celda.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="tablero.cpp">
+    <ClCompile Include="inputOutput.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="juego.cpp">
@@ -33,7 +30,10 @@
     <ClCompile Include="listaUndo.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="inputOutput.cpp">
+    <ClCompile Include="main.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="tablero.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
