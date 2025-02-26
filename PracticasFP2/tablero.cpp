@@ -1,4 +1,5 @@
 #include "tablero.h"
+#include "celda.h"
 
 void inicializar(tTablero tablero) {
 	tablero.nFils = 0;
@@ -11,7 +12,7 @@ void inicializar_tablero (tTablero tablero, int nfils, int ncols) {
 
 	for (int i = 0; i < nfils-1; i++) {
 		for (int j = 0; j < ncols-1; j++) {
-			tablero.datos[i][j].estado = VACIA;
+			inicializar(tablero.datos[i][j]);
 		}
 	}
 }
