@@ -1,4 +1,4 @@
-#ifndef main_h
+#ifndef main_h //Proteccion de inclusiones duplicadas
 #define main_h
 
 #include <iostream>

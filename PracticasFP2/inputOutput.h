@@ -1,4 +1,4 @@
-#ifndef inputOutput_h
+#ifndef inputOutput_h //Proteccion de inclusiones duplicadas
 #define inputOutput_h
 
 #include <iostream>

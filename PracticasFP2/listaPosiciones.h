@@ -1,4 +1,4 @@
-#ifndef listaPosiciones_h
+#ifndef listaPosiciones_h //Proteccion de inclusiones duplicadas
 #define listaPosiciones_h
 
 #include <iostream>

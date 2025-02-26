@@ -1,4 +1,4 @@
-#ifndef listaUndo_h
+#ifndef listaUndo_h //Proteccion de inclusiones duplicadas
 #define listaUndo_h
 
 #include <iostream>

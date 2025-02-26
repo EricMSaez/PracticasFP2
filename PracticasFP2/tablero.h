@@ -1,8 +1,9 @@
-#ifndef tablero_h
+#ifndef tablero_h //Proteccion de inclusiones duplicadas
 #define tablero_h
 
-#include <iostream>
+
 #include "celda.h" //Incluimos el header "celda.h" para poder usar tCelda
+#include <iostream>
 using namespace std;
 
 //Constantes temporales, ya se vera luego lo que hay que poner ahi

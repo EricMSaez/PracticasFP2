@@ -1,4 +1,4 @@
-#ifndef juego_h
+#ifndef juego_h //Proteccion de inclusiones duplicadas
 #define juego_h
 
 #include <iostream>
