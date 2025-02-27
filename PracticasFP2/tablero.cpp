@@ -12,7 +12,7 @@ void inicializar_tablero (tTablero tablero, int nfils, int ncols) {
 
 	for (int i = 0; i < nfils-1; i++) {
 		for (int j = 0; j < ncols-1; j++) {
-			inicializar(tablero.datos[i][j]);
+			inicializar(tablero.datos[i][j]); // Inicializar del modulo celda
 		}
 	}
 }
