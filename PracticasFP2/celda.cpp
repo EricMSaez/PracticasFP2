@@ -50,26 +50,26 @@ bool esta_marcada(tCelda Celda) {
 	return estaMarcada;
 }
 
-void descubrir_celda(tCelda Celda) {
+void descubrir_celda(tCelda& Celda) {
 	Celda.visible = true;
 }
 
-void ocultar_celda(tCelda Celda) {
+void ocultar_celda(tCelda& Celda) {
 	Celda.visible = false;
 }
 
-void poner_mina(tCelda Celda) {
+void poner_mina(tCelda& Celda) {
 	Celda.estado = MINA;
 }
 
-void marcar_mina(tCelda Celda) {
+void marcar_celda(tCelda& Celda) {
 	Celda.marcada = true;
 }
 
-void desmarcar_celda(tCelda Celda) {
+void desmarcar_celda(tCelda& Celda) {
 	Celda.marcada = false;
 }
 
-void poner_numero(tCelda Celda, int num) {
+void poner_numero(tCelda& Celda, int num) {
 	Celda.numero = num;
 }

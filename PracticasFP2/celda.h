@@ -36,17 +36,17 @@ bool contiene_numero(tCelda Celda);
 
 bool esta_marcada(tCelda Celda);
 
-void descubrir_celda(tCelda Celda);
+void descubrir_celda(tCelda& Celda);
 
-void ocultar_celda(tCelda Celda);
+void ocultar_celda(tCelda& Celda);
 
-void poner_mina(tCelda Celda);
+void poner_mina(tCelda& Celda);
 
-void marcar_mina(tCelda Celda);
+void marcar_celda(tCelda& Celda);
 
-void desmarcar_celda(tCelda Celda);
+void desmarcar_celda(tCelda& celda);
 
-void poner_numero(tCelda Celda, int num);
+void poner_numero(tCelda& Celda, int num);
 
 
 #endif
