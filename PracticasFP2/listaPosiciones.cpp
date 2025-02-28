@@ -5,9 +5,11 @@ void inicializar_listaPosiciones(tListaPosiciones& lista_pos) {
 }
 
 void insertar_final(tListaPosiciones& lista_pos, int x, int y) {
-	lista_pos.lista[lista_pos.cont].posx = x;
-	lista_pos.lista[lista_pos.cont].posy = y;
-	lista_pos.cont++;
+	if (lista_pos.cont < MAX_LISTA) {
+		lista_pos.lista[lista_pos.cont].posx = x;
+		lista_pos.lista[lista_pos.cont].posy = y;
+		lista_pos.cont++;
+	}
 }
 
 int longitud(tListaPosiciones lista_pos) {
