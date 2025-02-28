@@ -18,12 +18,12 @@ typedef struct {
 } tListaPosiciones;
 
 //Definicion de las funciones
-void inicializar_listaPosiciones(tListaPosiciones lista_pos);
+void inicializar_listaPosiciones(tListaPosiciones& lista_pos);
 
 int longitud(tListaPosiciones lista_pos);
 
 int dame_posX(tListaPosiciones lista_pos, int i);
 
-void insertar_final(tListaPosiciones lista_pos, int x, int y);
+void insertar_final(tListaPosiciones& lista_pos, int x, int y);
 
 #endif
