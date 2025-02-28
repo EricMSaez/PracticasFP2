@@ -41,5 +41,17 @@ bool contiene_numero(tJuego juego, int fila, int columna);
 
 int dame_numero(tJuego juego, int fila, int columna);
 
+bool mina_explotada(tJuego juego);
+
+bool esta_terminado(tJuego juego);
+
+void poner_mina(tJuego& juego, int fila, int columna);
+
+void marcar_desmarcar(tJuego& juego, int fila, int columna);
+
+void ocultar(tJuego& juego, int fila, int columna);
+
+void juega(tJuego& juego, int fila, int columna);
 
 #endif
+
