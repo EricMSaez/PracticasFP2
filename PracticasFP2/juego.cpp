@@ -130,13 +130,32 @@ void ocultar(tJuego& juego, int fila, int columna)	 {
 	}
 }
 
-void juega(tJuego& juego, int fila, int columna) {
+void juega(tJuego& juego, int fila, int columna, tListaPosiciones lista_pos) {
 	tCelda celda = juego.tableroJuego.datos[fila][columna]; //Guarda la celda en la variable celda;
 	if (es_valida(juego.tableroJuego, fila, columna)) { // Comprueba si la posicion (fila x columna) es valida
-		if (es_visible(celda)) {	//Comprueba si la celda en la posicion (fila x columna) es visible
-			if (esta_marcada(celda)) {	//Comprueba si la celda en la posicion (fila x columna) esta marcada
+		if (!es_visible(celda)) {	//Comprueba si la celda en la posicion (fila x columna) no es visible
+			if (!esta_marcada(celda)) {	//Comprueba si la celda en la posicion (fila x columna) no esta marcada
 				
 				descubrir_celda(juego.tableroJuego.datos[fila][columna]);	//Descubre la celda en la posicion (fila x columna)
+				insertar_final(lista_pos, fila, columna);	//Añade (fila x columna) a la lista de posiciones
+
+				if (!es_mina(celda) && dame_numero(celda) == 0) {	//Compruba si la celda no es una mina y no tiene un numero mayor que 0
+					for (int i = fila - 1; i <= fila + 1; i++) {	//Recorre las celdas adyacentes
+						for (int j = columna - 1; j <= columna + 1; j++) {
+							
+							if (i != fila && j != columna) {	//Comprueba que la celda seleccionada por el bucle no es la que se quiere descubrir
+								tCelda celdaAdyacente = juego.tableroJuego.datos[i][j];
+
+								//Actualiza las celdas adyacentes:
+								if (!es_visible(celdaAdyacente) && !esta_marcada(celdaAdyacente)) {	
+									descubrir_celda(celdaAdyacente);
+									insertar_final(lista_pos, i, j);
+								}
+
+							}
+						}
+					}
+				}
 			}
 		}
 	}
