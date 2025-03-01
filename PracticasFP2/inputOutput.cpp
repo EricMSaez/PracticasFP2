@@ -6,13 +6,37 @@ using namespace std;
 
 const char CHAR_MINA = '*';  // Mina
 
+
+void mostrar_cabecera() {
+    cout << "Buscaminas" << endl << "----------";
+}
+void pedir_pos(int fila, int columna) {
+    cin >> fila >> columna;
+}
+
+bool cargar_juego(const Matriz juego) {
+    bool archivoAbierto = false;
+    string nombre;
+    cin >> nombre;
+    ifstream archivo;
+
+    archivo.open(nombre);
+    if (archivo.is_open()) {
+        archivoAbierto = true;
+        
+
+        archivo.close();
+    }
+
+    return archivoAbierto;
+}
+
+
+//Para que se vea bonito:
+
 void mostrar_separador(const Matriz juego);
 void mostrar_celda(const Matriz juego, int f, int c);
 void color_numero(int numero);
-
-
-
-
 
 void color_numero(int numero) {
     switch (numero) {
@@ -26,7 +50,6 @@ void color_numero(int numero) {
         break;
     }
 }
-
 
 void mostrar_separador(const Matriz juego) {
     cout << "\t -+";
@@ -68,7 +91,6 @@ void mostrar_celda(const Matriz juego, int fila, int columna) {
     }
 }
 
-
 void mostrar_juego_consola(const Matriz juego) {
 
     // mostrar el numero de jugadas del juego
@@ -98,3 +120,4 @@ void mostrar_juego_consola(const Matriz juego) {
     }
     cout << endl;
 }
+

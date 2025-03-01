@@ -22,8 +22,10 @@ typedef tCelda Matriz[NFILS][NCOLS];
 
 using namespace std;
 
-
+//Definición de funciones
 void mostrar_juego_consola(const Matriz juego);
-
+void mostrar_cabecera();
+void pedir_pos(int fila, int columna);
+bool cargar_juego(const Matriz juego);
 
 #endif
