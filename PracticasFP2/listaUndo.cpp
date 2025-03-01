@@ -12,7 +12,10 @@ void insertar_final(tListaUndo lista_undo, tListaPosiciones lista_pos) {
 		}
 		lista_undo.lista[MAX_UNDO - 1] = lista_pos;
 	}
-	else lista_undo.lista[lista_undo.cont] = lista_pos;
+	else {
+		lista_undo.lista[lista_undo.cont] = lista_pos;
+		lista_undo.cont++;
+	}
 }
 
 tListaPosiciones ultimos_movimientos(tListaUndo lista_undo) {
