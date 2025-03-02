@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "tablero.h" //Incluimos el header "tablero.h" para poder usar tTablero
+#include "listaPosiciones.h" //Incluimos el header "listaPosiciones.h" para poder usar tListaPosiciones
 using namespace std;
 
 //Definicion de tipos 
