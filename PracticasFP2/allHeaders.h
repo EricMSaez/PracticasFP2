@@ -1,0 +1,8 @@
+#include "celda.h"
+#include "colors.h"
+#include "inputOutput.h"
+#include "juego.h"
+#include "listaPosiciones.h"
+#include "listaUndo.h"
+#include "main.h"
+#include "tablero.h"
