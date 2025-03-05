@@ -26,6 +26,9 @@ using namespace std;
 void mostrar_juego_consola(const Matriz juego);
 void mostrar_cabecera();
 void pedir_pos(int fila, int columna);
+
+istream& operator>> (istream& in, tJuego& juego);
+
 bool cargar_juego(const Matriz juego);
 
 #endif

@@ -1,4 +1,6 @@
 #include "InputOutput.h"
+#include "juego.h" //Incluimos el header "juego.h" para poder usar tJuego
+
 #include <iomanip>
 #include <iostream>
 
@@ -13,6 +15,24 @@ void mostrar_cabecera() {
 void pedir_pos(int fila, int columna) {
     cin >> fila >> columna;
 }
+istream& operator>> (istream& in, tJuego& juego) {
+    
+    ifstream in;
+    int nfils, ncols, nMinas, xMina, yMina;
+
+    in >> nfils >> ncols;
+    in >> nMinas;
+
+    inicializar_juego(juego, nfils, ncols);
+    juego.num_minas = nMinas;
+
+    for (int i = 0; i < nMinas; i++) {
+        in >> xMina >> yMina;
+        poner_mina(juego, xMina, yMina);
+    }
+    
+    
+}
 
 bool cargar_juego(const Matriz juego) {
     bool archivoAbierto = false;
@@ -24,7 +44,7 @@ bool cargar_juego(const Matriz juego) {
     if (archivo.is_open()) {
         archivoAbierto = true;
         
-
+        archivo >> juego;
         archivo.close();
     }
 
