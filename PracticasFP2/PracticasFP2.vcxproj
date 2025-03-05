@@ -136,6 +136,7 @@
     <ClCompile Include="tablero.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="allHeaders.h" />
     <ClInclude Include="celda.h" />
     <ClInclude Include="colors.h" />
     <ClInclude Include="inputOutput.h" />

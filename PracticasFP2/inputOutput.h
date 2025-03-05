@@ -3,6 +3,7 @@
 
 #include "colors.h"
 #include <fstream>
+using namespace std;
 
 const int N_HUECOS = 2; // huecos a dejar en el formato de las celdas.
 
@@ -20,8 +21,6 @@ const int NCOLS = 2;
 typedef tCelda Matriz[NFILS][NCOLS];
 
 
-using namespace std;
-
 //Definición de funciones
 void mostrar_juego_consola(const Matriz juego);
 void mostrar_cabecera();
@@ -29,6 +28,6 @@ void pedir_pos(int fila, int columna);
 
 istream& operator>> (istream& in, tJuego& juego);
 
-bool cargar_juego(const Matriz juego);
+bool cargar_juego(tJuego juego);
 
 #endif

@@ -34,7 +34,7 @@ istream& operator>> (istream& in, tJuego& juego) {
     
 }
 
-bool cargar_juego(const Matriz juego) {
+bool cargar_juego(tJuego juego) {
     bool archivoAbierto = false;
     string nombre;
     cin >> nombre;
