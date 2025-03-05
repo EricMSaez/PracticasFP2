@@ -20,7 +20,7 @@ typedef struct {
 
 // Declaración de las funciones
 
-void inicializar(tCelda Celda);
+void inicializar(tCelda& Celda);
 
 tEstado dame_estado(tCelda Celda);
 

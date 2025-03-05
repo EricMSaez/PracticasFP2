@@ -1,12 +1,12 @@
 #include "tablero.h"
 #include "celda.h"
 
-void inicializar(tTablero tablero) {
+void inicializar(tTablero& tablero) {
 	tablero.nFils = 0;
 	tablero.nCols = 0;
 }
 
-void inicializar_tablero (tTablero tablero, int nfils, int ncols) {
+void inicializar_tablero (tTablero& tablero, int nfils, int ncols) {
 	tablero.nFils = nfils;
 	tablero.nCols = ncols;
 
@@ -39,6 +39,6 @@ bool es_valida(tTablero tablero, int fila, int columna) {
 	return posValida;
 }
 
-void poner_celda(tTablero tablero, int fila, int columna, tCelda celda) {
+void poner_celda(tTablero& tablero, int fila, int columna, tCelda& celda) {
 	tablero.datos[fila][columna] = celda;
 }

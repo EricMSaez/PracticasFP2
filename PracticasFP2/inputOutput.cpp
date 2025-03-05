@@ -17,7 +17,7 @@ void pedir_pos(int fila, int columna) {
 }
 istream& operator>> (istream& in, tJuego& juego) {
     
-    ifstream in;
+    //ifstream in;
     int nfils, ncols, nMinas, xMina, yMina;
 
     in >> nfils >> ncols;
@@ -31,12 +31,13 @@ istream& operator>> (istream& in, tJuego& juego) {
         poner_mina(juego, xMina, yMina);
     }
     
-    
+    return in;
 }
 
-bool cargar_juego(tJuego juego) {
+bool cargar_juego(tJuego& juego) {
     bool archivoAbierto = false;
     string nombre;
+    cout << "Escribe el nombre del archivo: ";
     cin >> nombre;
     ifstream archivo;
 
@@ -53,10 +54,6 @@ bool cargar_juego(tJuego juego) {
 
 
 //Para que se vea bonito:
-
-void mostrar_separador(const Matriz juego);
-void mostrar_celda(const Matriz juego, int f, int c);
-void color_numero(int numero);
 
 void color_numero(int numero) {
     switch (numero) {
@@ -80,7 +77,7 @@ void mostrar_separador(const Matriz juego) {
 }
 
 void mostrar_celda(const Matriz juego, int fila, int columna) {
-    if (!juego[fila][columna].descubierta && !juego[fila][columna].marcada) {
+    if (!juego[fila][columna].visible && !juego[fila][columna].marcada) {
         cout << BG_GRAY << GRAY << N_HUECOS << setfill(' ') << ' ' << RESET;
     }
     else {

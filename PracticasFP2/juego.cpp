@@ -3,7 +3,7 @@
 #include "celda.h"
 #include "listaPosiciones.h"
 
-void inicializar(tJuego juego) {
+void inicializar(tJuego& juego) {
 	juego.num_jugadas = 0;
 	juego.mina_explotada = false;
 	juego.num_minas = 0;
@@ -11,7 +11,7 @@ void inicializar(tJuego juego) {
 	inicializar(juego.tableroJuego);
 }
 
-void inicializar_juego(tJuego juego, int nfils, int ncols) {
+void inicializar_juego(tJuego& juego, int nfils, int ncols) {
 	inicializar(juego);
 	inicializar_tablero(juego.tableroJuego, nfils, ncols);
 };

@@ -18,9 +18,9 @@ typedef struct {
 
 //Definicion de funciones
 
-void inicializar(tJuego juego);
+void inicializar(tJuego& juego);
 
-void inicializar_juego(tJuego juego, int nfils, int ncols);
+void inicializar_juego(tJuego& juego, int nfils, int ncols);
 
 int dame_num_jugadas(tJuego juego);
 

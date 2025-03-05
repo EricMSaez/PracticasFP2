@@ -17,9 +17,9 @@ typedef struct {
 
 //Declaración de las funciones
 
-void inicializar(tTablero tablero);	// Inicializar tablero sin celdas
+void inicializar(tTablero& tablero);	// Inicializar tablero sin celdas
 
-void inicializar_tablero(tTablero tablero, int nfils, int ncols); // Inicializar tablero con celdas vacías
+void inicializar_tablero(tTablero& tablero, int nfils, int ncols); // Inicializar tablero con celdas vacías
 
 int num_filas(tTablero tab);
 
@@ -29,6 +29,6 @@ tCelda dame_celda(tTablero tablero, int fila, int columna);
 
 bool es_valida(tTablero tablero, int fila, int columna);
 
-void poner_celda(tTablero tablero, int fila, int columna, tCelda celda);
+void poner_celda(tTablero& tablero, int fila, int columna, tCelda& celda);
 
 #endif

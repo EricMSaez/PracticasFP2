@@ -1,5 +1,9 @@
-#include "main.h"
+#include "allHeaders.h"
 
 int main() {
-	cout << "Ole Ole";
+	cout << "Ole Ole" << endl;
+	tJuego juego;
+	cargar_juego(juego);
+	mostrar_juego_consola(juego.tableroJuego.datos);
+
 }

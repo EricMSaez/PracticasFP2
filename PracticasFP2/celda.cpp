@@ -1,6 +1,6 @@
 #include "celda.h"
 
-void inicializar(tCelda Celda) {
+void inicializar(tCelda& Celda) {
 	Celda.visible = false;
 	Celda.estado = VACIA;
 	Celda.numero = 0;
