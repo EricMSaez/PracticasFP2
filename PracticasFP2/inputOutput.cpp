@@ -1,5 +1,6 @@
 #include "inputOutput.h"
 #include "tablero.h"
+#include "juego.h"
 #include <iomanip>
 
 #include <iostream>
@@ -14,9 +15,42 @@ void mostrar_separador(tTablero tablero);
 void mostrar_celda(tTablero tablero, int f, int c);
 void color_numero(int numero);
 
+istream& operator>> (istream& in, tJuego& juego) {
 
+    //ifstream in;
+    int nfils, ncols, nMinas, xMina, yMina;
 
+    in >> nfils >> ncols;
+    in >> nMinas;
 
+    inicializar_juego(juego, nfils, ncols);
+    juego.num_minas = nMinas;
+
+    for (int i = 0; i < nMinas; i++) {
+        in >> xMina >> yMina;
+        poner_mina(juego, xMina, yMina);
+    }
+
+    return in;
+}
+
+bool cargar_juego(tJuego& juego) {
+    bool archivoAbierto = false;
+    string nombre;
+    cout << "Escribe el nombre del archivo: ";
+    cin >> nombre;
+    ifstream archivo;
+
+    archivo.open(nombre);
+    if (archivo.is_open()) {
+        archivoAbierto = true;
+
+        archivo >> juego;
+        archivo.close();
+    }
+
+    return archivoAbierto;
+}
 
 void color_numero(int numero) {
     switch (numero) {
