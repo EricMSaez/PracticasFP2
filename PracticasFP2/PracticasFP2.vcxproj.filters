@@ -18,9 +18,6 @@
     <ClCompile Include="celda.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="inputOutput.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="juego.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -36,12 +33,12 @@
     <ClCompile Include="tablero.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="inputOutput.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="celda.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="inputOutput.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="juego.h">
@@ -63,6 +60,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="allHeaders.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="inputOutput.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
