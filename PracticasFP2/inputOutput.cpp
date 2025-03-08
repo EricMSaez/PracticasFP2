@@ -20,14 +20,14 @@ istream& operator>> (istream& in, tJuego& juego) {
     //ifstream in;
     int nfils, ncols, nMinas, xMina, yMina;
 
-    in >> nfils >> ncols;
-    in >> nMinas;
+    in >> nfils >> ncols >> nMinas;
 
     inicializar_juego(juego, nfils, ncols);
     juego.num_minas = nMinas;
 
     for (int i = 0; i < nMinas; i++) {
         in >> xMina >> yMina;
+        cout << "xMina: " << xMina << " yMina: " << yMina << endl;
         poner_mina(juego, xMina, yMina);
     }
 

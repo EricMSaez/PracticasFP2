@@ -89,7 +89,7 @@ void poner_mina(tJuego& juego, int fila, int columna) {
 	if (es_valida(juego.tableroJuego, fila, columna)) { // Comprueba si (fila x columna) es una posicion valida 
 		if (!es_mina(celda)) { // Comprueba si en la posicion (fila x columna) hay mina 
 
-			poner_mina(celda); //Pone mina en la celda de la posicion (fila x columna)
+			poner_mina(juego.tableroJuego.datos[fila][columna]); //Pone mina en la celda de la posicion (fila x columna)
 
 			for (int i = fila-1;i <= fila + 1;i++) {		// Bucle que empiza en una posicion anterior a la casilla seleccionada y termina una despues 
 				for (int j = columna - 1; j <= columna + 1;j++) {
@@ -148,7 +148,7 @@ void juega(tJuego& juego, int fila, int columna, tListaPosiciones lista_pos) {
 
 								//Actualiza las celdas adyacentes:
 								if (!es_visible(celdaAdyacente) && !esta_marcada(celdaAdyacente)) {	
-									descubrir_celda(celdaAdyacente);
+									descubrir_celda(juego.tableroJuego.datos[i][j]);
 									insertar_final(lista_pos, i, j);
 								}
 
