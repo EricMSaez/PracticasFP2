@@ -27,7 +27,6 @@ istream& operator>> (istream& in, tJuego& juego) {
 
     for (int i = 0; i < nMinas; i++) {
         in >> xMina >> yMina;
-        cout << "xMina: " << xMina << " yMina: " << yMina << endl;
         poner_mina(juego, xMina, yMina);
     }
 
