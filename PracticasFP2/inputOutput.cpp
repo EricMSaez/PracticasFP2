@@ -1,36 +1,36 @@
-#include "InputOutput.h"
-#include "juego.h" //Incluimos el header "juego.h" para poder usar tJuego
-
+#include "inputOutput.h"
+#include "tablero.h"
+#include "juego.h"
 #include <iomanip>
+
 #include <iostream>
 
 using namespace std;
 
+
 const char CHAR_MINA = '*';  // Mina
 
 
-void mostrar_cabecera() {
-    cout << "Buscaminas" << endl << "----------";
-}
-void pedir_pos(int fila, int columna) {
-    cin >> fila >> columna;
-}
+void mostrar_separador(tTablero tablero);
+void mostrar_celda(tTablero tablero, int f, int c);
+void color_numero(int numero);
+
 istream& operator>> (istream& in, tJuego& juego) {
-    
+
     //ifstream in;
     int nfils, ncols, nMinas, xMina, yMina;
 
-    in >> nfils >> ncols;
-    in >> nMinas;
+    in >> nfils >> ncols >> nMinas;
 
     inicializar_juego(juego, nfils, ncols);
     juego.num_minas = nMinas;
 
     for (int i = 0; i < nMinas; i++) {
         in >> xMina >> yMina;
+        cout << "xMina: " << xMina << " yMina: " << yMina << endl;
         poner_mina(juego, xMina, yMina);
     }
-    
+
     return in;
 }
 
@@ -44,16 +44,13 @@ bool cargar_juego(tJuego& juego) {
     archivo.open(nombre);
     if (archivo.is_open()) {
         archivoAbierto = true;
-        
+
         archivo >> juego;
         archivo.close();
     }
 
     return archivoAbierto;
 }
-
-
-//Para que se vea bonito:
 
 void color_numero(int numero) {
     switch (numero) {
@@ -68,7 +65,12 @@ void color_numero(int numero) {
     }
 }
 
-void mostrar_separador(const Matriz juego) {
+
+void mostrar_separador(tTablero tablero) {
+
+    int NCOLS = tablero.nCols;
+    int NFILS = tablero.nFils;
+
     cout << "\t -+";
     for (int col = 0; col < NCOLS; ++col) {
         cout << setw(N_HUECOS + 1) << setfill('-') << '+' << setfill(' ');
@@ -76,23 +78,23 @@ void mostrar_separador(const Matriz juego) {
     cout << endl;
 }
 
-void mostrar_celda(const Matriz juego, int fila, int columna) {
-    if (!juego[fila][columna].visible && !juego[fila][columna].marcada) {
+void mostrar_celda(tTablero tablero, int fila, int columna) {
+    if (!tablero.datos[fila][columna].visible && !tablero.datos[fila][columna].marcada) {
         cout << BG_GRAY << GRAY << N_HUECOS << setfill(' ') << ' ' << RESET;
     }
     else {
         cout << BG_BLACK << BLACK;
-        if (!juego[fila][columna].marcada) {
-            if (juego[fila][columna].estado == MINA) {
+        if (!tablero.datos[fila][columna].marcada) {
+            if (tablero.datos[fila][columna].estado == MINA) {
                 cout << RED << setw(N_HUECOS) << setfill(' ') << CHAR_MINA << RESET;
             }
             else {
-                if (juego[fila][columna].estado == VACIA) {
+                if (tablero.datos[fila][columna].estado == VACIA) {
                     cout << setw(N_HUECOS) << setfill(' ') << ' ' << RESET;
                 }
                 else {
-                    if (juego[fila][columna].estado == NUMERO) {
-                        int numero = juego[fila][columna].numero;
+                    if (tablero.datos[fila][columna].estado == NUMERO) {
+                        int numero = tablero.datos[fila][columna].numero;
                         color_numero(numero);
                         cout << setw(N_HUECOS) << setfill(' ') << numero << RESET;
                     }
@@ -108,10 +110,14 @@ void mostrar_celda(const Matriz juego, int fila, int columna) {
     }
 }
 
-void mostrar_juego_consola(const Matriz juego) {
 
-    // mostrar el numero de jugadas del juego
+void mostrar_juego_consola(tTablero tablero) {
 
+    int NCOLS = tablero.nCols;
+    int NFILS = tablero.nFils;
+    
+    // mostrar el número de jugadas del juego
+    
     // mostrar cabecera
     cout << "\t  |";
     for (int col = 0; col < NCOLS; col++) {
@@ -120,7 +126,7 @@ void mostrar_juego_consola(const Matriz juego) {
     cout << endl;
 
     // mostrar separador
-    mostrar_separador(juego);
+    mostrar_separador(tablero);
 
     // mostrar tablero
     for (int f = 0; f < NFILS; f++) {
@@ -128,13 +134,14 @@ void mostrar_juego_consola(const Matriz juego) {
         cout << "\t" << LBLUE << setw(2) << f << RESET << '|';
         // mostrar la fila
         for (int c = 0; c < NCOLS; c++) {
-            mostrar_celda(juego, f, c);
+            mostrar_celda(tablero, f, c);
             cout << '|';
         }
         cout << endl;
 
-        mostrar_separador(juego);
+        mostrar_separador(tablero);
     }
     cout << endl;
 }
+
 

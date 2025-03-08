@@ -72,4 +72,5 @@ void desmarcar_celda(tCelda& Celda) {
 
 void poner_numero(tCelda& Celda, int num) {
 	Celda.numero = num;
+	Celda.estado = NUMERO;
 }

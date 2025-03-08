@@ -10,8 +10,8 @@ void inicializar_tablero (tTablero& tablero, int nfils, int ncols) {
 	tablero.nFils = nfils;
 	tablero.nCols = ncols;
 
-	for (int i = 0; i < nfils-1; i++) {
-		for (int j = 0; j < ncols-1; j++) {
+	for (int i = 0; i < nfils; i++) {
+		for (int j = 0; j < ncols; j++) {
 			inicializar(tablero.datos[i][j]); // Inicializar del modulo celda
 		}
 	}
