@@ -15,6 +15,24 @@ void mostrar_separador(tTablero tablero);
 void mostrar_celda(tTablero tablero, int f, int c);
 void color_numero(int numero);
 
+void mostrar_cabecera() {
+    cout << "Buscaminas" << endl << "----------";
+}
+
+void pedir_pos(int& fila, int& columna) {
+    cout << "Introduce la fila y la columna: ";
+    cin >> fila >> columna;
+}
+
+void mostrar_resultado(tJuego juego) {
+    
+    if (mina_explotada(juego)) {
+        cout << "Has perdido.";
+    }else if (esta_completo(juego)) {
+        cout << "Has ganado."; 
+    }
+}
+
 istream& operator>> (istream& in, tJuego& juego) {
 
     //ifstream in;
