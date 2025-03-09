@@ -42,6 +42,8 @@ bool contiene_numero(tJuego juego, int fila, int columna);
 
 int dame_numero(tJuego juego, int fila, int columna);
 
+bool esta_completo(tJuego juego);
+
 bool mina_explotada(tJuego juego);
 
 bool esta_terminado(tJuego juego);
