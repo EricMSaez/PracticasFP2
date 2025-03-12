@@ -148,15 +148,14 @@ void juega(tJuego& juego, int fila, int columna, tListaPosiciones& lista_pos) {
 							if (i != fila || j != columna) {	//Comprueba que la celda seleccionada por el bucle no es la que se quiere descubrir
 								
 								if (!contiene_mina(juego, i, j)) { //Comprueba que la celda anterior no tenga mina
-									juega(juego, i, j, lista_pos);
-									//if (!contiene_numero(juego.tableroJuego.datos[i][j])) { //Comprueba si la celda anterior no tiene numero
-										
+									juega(juego, i, j, lista_pos);									
 										juega(juego, i, j, lista_pos);
-									//}
 								}
 							}
 						}
 					}
+				}
+				else if (es_mina(celda)) juego.mina_explotada = true;
 				}
 			}
 		}
