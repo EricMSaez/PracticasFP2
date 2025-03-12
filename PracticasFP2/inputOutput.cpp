@@ -16,7 +16,7 @@ void mostrar_celda(tTablero tablero, int f, int c);
 void color_numero(int numero);
 
 void mostrar_cabecera() {
-    cout << "Buscaminas" << endl << "----------";
+    cout << "Buscaminas" << endl << "----------" << endl;
 }
 
 void pedir_pos(int& fila, int& columna) {
