@@ -28,9 +28,11 @@ void mostrar_resultado(tJuego juego) {
     
     if (mina_explotada(juego)) {
         cout << "Has perdido.";
-    }else if (esta_completo(juego)) {
-        cout << "Has ganado."; 
     }
+    else if (esta_completo(juego)) {
+        cout << "Has ganado.";
+    }
+    else cout << "Has salido del juego.";
 }
 
 istream& operator>> (istream& in, tJuego& juego) {
