@@ -6,7 +6,6 @@ int main() {
 	tJuego juego;
 	tListaPosiciones listaPos;
 	tListaUndo listaUndo;
-	//inicio_juego(juego, listaPos, listaUndo);
 	inicio_juego(juego,listaPos,listaUndo);
 }
 

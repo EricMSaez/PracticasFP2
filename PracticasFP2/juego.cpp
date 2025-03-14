@@ -142,6 +142,7 @@ void juega(tJuego& juego, int fila, int columna, tListaPosiciones& lista_pos) {
 			if (!esta_marcada(celda)) {	//Comprueba si la celda en la posicion (fila x columna) no esta marcada
 
 				descubrir_celda(juego.tableroJuego.datos[fila][columna]);	//Descubre la celda en la posicion (fila x columna)
+				juego.num_descubiertas++;
 				insertar_final(lista_pos, fila, columna);	//Añade (fila x columna) a la lista de posiciones
 
 				if (!es_mina(celda) && !contiene_numero(celda)) {	//Compruba si la celda no es una mina y no tiene numero
