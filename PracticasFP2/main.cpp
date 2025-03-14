@@ -18,7 +18,7 @@ int main() {
 		pedir_pos(fila, columna); //Pide la posicion al jugador y la guarda
 		inicializar_listaPosiciones(listaPos);
 		while (!esta_terminado(juego)) { //Si fila = -1 y columna = -1, el juego termina
-			juega()
+			juega(juego, listaPos, listaUndo);
 		}
 		mostrar_resultado(juego);
 
@@ -34,7 +34,7 @@ void inicio_juego(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUn
 	if (!cargar_juego(juego)) {
 		cout << "Error de lectura de archivo.";
 	}
-	else ()
+	else juega(juego, listaPos, listaUndo);
 }
 
 void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) {
@@ -48,7 +48,9 @@ void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) {
 	else juega(juego, fila, columna, listaPos);
 }
 
-void terminar_juego(juego);
+void terminar_juego(tJuego juego) {
+	//Completar
+}
 
 void marcar_celda(tJuego& juego) {
 	int fila, columna;

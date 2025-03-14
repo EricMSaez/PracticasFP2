@@ -135,18 +135,18 @@ void juega(tJuego& juego, int fila, int columna, tListaPosiciones& lista_pos) {
 	if (es_valida(juego.tableroJuego, fila, columna)) { // Comprueba si la posicion (fila x columna) es valida
 		if (!es_visible(celda)) {	//Comprueba si la celda en la posicion (fila x columna) no es visible
 			if (!esta_marcada(celda)) {	//Comprueba si la celda en la posicion (fila x columna) no esta marcada
-				
+
 				descubrir_celda(juego.tableroJuego.datos[fila][columna]);	//Descubre la celda en la posicion (fila x columna)
 				insertar_final(lista_pos, fila, columna);	//Añade (fila x columna) a la lista de posiciones
 
 				if (!es_mina(celda) && !contiene_numero(celda)) {	//Compruba si la celda no es una mina y no tiene numero
-					
+
 					for (int i = fila - 1; i <= fila + 1; i++) {	//Recorre las celdas adyacentes
-						
+
 						for (int j = columna - 1; j <= columna + 1; j++) {
-							
+
 							if (i != fila || j != columna) {	//Comprueba que la celda seleccionada por el bucle no es la que se quiere descubrir
-								
+
 								if (!contiene_mina(juego, i, j)) { //Comprueba que la celda anterior no tenga mina
 									juega(juego, i, j, lista_pos);
 								}
@@ -155,7 +155,6 @@ void juega(tJuego& juego, int fila, int columna, tListaPosiciones& lista_pos) {
 					}
 				}
 				else if (es_mina(celda)) juego.mina_explotada = true;
-				}
 			}
 		}
 	}
