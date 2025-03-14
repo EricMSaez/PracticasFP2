@@ -61,6 +61,7 @@ int dame_numero(tJuego juego, int fila, int columna) {
 }
 
 bool esta_completo(tJuego juego) {
+	/*
 	int contF = juego.tableroJuego.nFils, contC = juego.tableroJuego.nCols;
 	bool esta_completo = true;
 	for (int i = 0;i < juego.tableroJuego.nFils;i++) {
@@ -68,7 +69,12 @@ bool esta_completo(tJuego juego) {
 			if (!es_visible(juego.tableroJuego.datos[i][j])) esta_completo = false;
 		}
 	}
-	return esta_completo;
+	*/
+	bool estaCompleto = false;
+	int numCeldasJugadas = juego.num_descubiertas + juego.num_minas;
+	int numCeldasTablero = juego.tableroJuego.nCols * juego.tableroJuego.nFils;
+	if (numCeldasJugadas == numCeldasTablero) estaCompleto = true;
+	return estaCompleto;
 }
 
 bool mina_explotada(tJuego juego) {
@@ -90,7 +96,6 @@ void poner_mina(tJuego& juego, int fila, int columna) {
 		if (!es_mina(celda)) { // Comprueba si en la posicion (fila x columna) hay mina 
 
 			poner_mina(juego.tableroJuego.datos[fila][columna]); //Pone mina en la celda de la posicion (fila x columna)
-
 			for (int i = fila-1;i <= fila + 1;i++) {		// Bucle que empiza en una posicion anterior a la casilla seleccionada y termina una despues 
 				for (int j = columna - 1; j <= columna + 1;j++) {
 

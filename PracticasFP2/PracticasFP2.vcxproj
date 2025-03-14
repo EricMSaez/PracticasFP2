@@ -147,7 +147,7 @@
     <ClInclude Include="tablero.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="archivo.txt" />
+    <Text Include="a.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

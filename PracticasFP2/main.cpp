@@ -6,25 +6,8 @@ int main() {
 	tJuego juego;
 	tListaPosiciones listaPos;
 	tListaUndo listaUndo;
-	int fila, columna;
-	
-
-	inicializar(juego);
-
-
-	if (cargar_juego(juego)) {
-		mostrar_cabecera();
-		mostrar_juego_consola(juego.tableroJuego);
-		pedir_pos(fila, columna); //Pide la posicion al jugador y la guarda
-		inicializar_listaPosiciones(listaPos);
-		while (!esta_terminado(juego)) { //Si fila = -1 y columna = -1, el juego termina
-			juega(juego, listaPos, listaUndo);
-		}
-		mostrar_resultado(juego);
-
-	}
-	else cout << "Error. No se ha podido cargar el archivo";
-
+	//inicio_juego(juego, listaPos, listaUndo);
+	inicio_juego(juego,listaPos,listaUndo);
 }
 
 
@@ -39,24 +22,39 @@ void inicio_juego(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUn
 
 void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) {
 	int fila, columna;
-	mostrar_cabecera();
-	mostrar_juego_consola(juego.tableroJuego);
-	pedir_pos(fila, columna);
-	if (fila == -1 && columna == -1); //Llamada  a terminar juego
-	else if (fila == -2 && columna == -2) marcar_celda(juego);
-	else if (fila == -3 && columna == -3) undoJugada(juego, listaPos);
-	else juega(juego, fila, columna, listaPos);
+	if (esta_completo(juego) || mina_explotada(juego)) {
+		terminar_juego(juego);
+	}
+	else {
+		mostrar_cabecera();
+		mostrar_juego_consola(juego.tableroJuego);
+		pedir_pos(fila, columna);
+		if (fila == -1 && columna == -1) terminar_juego(juego);
+		else if (fila == -2 && columna == -2) {
+			marcarDesmarcar(juego);
+			juega(juego, listaPos, listaUndo);
+		}
+		else if (fila == -3 && columna == -3); //undoJugada(juego, listaPos);
+		else {
+			juega(juego, fila, columna, listaPos);
+			juega(juego, listaPos, listaUndo);
+		}
+	}
 }
 
 void terminar_juego(tJuego juego) {
-	//Completar
+	mostrar_juego_consola(juego.tableroJuego);
+	mostrar_resultado(juego);
+
 }
 
-void marcar_celda(tJuego& juego) {
+void marcarDesmarcar(tJuego& juego) {
 	int fila, columna;
 	cout << "MARCAR/DESMARCAR mina:" << endl;
 	pedir_pos(fila, columna);
 	marcar_desmarcar(juego, fila, columna);
 }
 
-void undoJugada(tJuego& juego, tListaPosiciones listaPos);
+void undoJugada(tJuego& juego, tListaPosiciones listaPos) {
+	//Completar
+}

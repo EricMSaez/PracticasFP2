@@ -67,7 +67,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="archivo.txt">
+    <Text Include="a.txt">
       <Filter>Archivos de recursos</Filter>
     </Text>
   </ItemGroup>
