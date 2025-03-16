@@ -6,7 +6,7 @@ using namespace std;
 
 //Definicion de tipos
 
-const int MAX_LISTA = 10; //Variable temporal ¡!
+const int MAX_LISTA = 100; //Variable temporal ¡!
 
 typedef struct {
 	int posx;
