@@ -1,10 +1,10 @@
 #include "listaUndo.h"
 
-void inicializar(tListaUndo lista_undo) {
+void inicializar(tListaUndo& lista_undo) {
 	lista_undo.cont = 0;
 }
 
-void insertar_final(tListaUndo lista_undo, tListaPosiciones lista_pos) {
+void insertar_final(tListaUndo& lista_undo, tListaPosiciones& lista_pos) {
 
 	if (lista_undo.cont == MAX_UNDO) {
 		for (int i = 0; i < MAX_UNDO - 1; i++) {
