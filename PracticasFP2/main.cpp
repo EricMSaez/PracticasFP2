@@ -62,14 +62,12 @@ void marcarDesmarcar(tJuego& juego) {
 void undoJugada(tJuego& juego, tListaUndo& listaUndo) {
 	tListaPosiciones listaPos;
 	listaPos = ultimos_movimientos(listaUndo);
-	cout << listaUndo.cont;
-	cout << listaPos.cont;
-	/*
+	//cout << listaUndo.cont;
+	//cout << listaPos.cont;
+	
 	for (int i = 0; i < listaPos.cont; i++) {
-		int x = dame_posX();
-		int y = dame_posY();
-		//juego.tableroJuego.datos[x];
+		int x = dame_posX(listaPos, i);
+		int y = dame_posY(listaPos, i);
 		ocultar(juego, x, y);
-	} */
-	//Completar
+	}
 }
