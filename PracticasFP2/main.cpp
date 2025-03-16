@@ -34,9 +34,13 @@ void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) {
 			marcarDesmarcar(juego);
 			juega(juego, listaPos, listaUndo);
 		}
-		else if (fila == -3 && columna == -3); //undoJugada(juego, listaPos);
+		else if (fila == -3 && columna == -3) {
+			undoJugada(juego, listaUndo);
+			juega(juego, listaPos, listaUndo);
+		}
 		else {
 			juega(juego, fila, columna, listaPos);
+			insertar_final(listaUndo, listaPos);
 			juega(juego, listaPos, listaUndo);
 		}
 	}
@@ -55,6 +59,17 @@ void marcarDesmarcar(tJuego& juego) {
 	marcar_desmarcar(juego, fila, columna);
 }
 
-void undoJugada(tJuego& juego, tListaPosiciones listaPos) {
+void undoJugada(tJuego& juego, tListaUndo& listaUndo) {
+	tListaPosiciones listaPos;
+	listaPos = ultimos_movimientos(listaUndo);
+	cout << listaUndo.cont;
+	cout << listaPos.cont;
+	/*
+	for (int i = 0; i < listaPos.cont; i++) {
+		int x = dame_posX();
+		int y = dame_posY();
+		//juego.tableroJuego.datos[x];
+		ocultar(juego, x, y);
+	} */
 	//Completar
 }

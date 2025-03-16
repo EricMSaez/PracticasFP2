@@ -14,4 +14,6 @@ void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo);
 
 void terminar_juego(tJuego juego);
 
+void undoJugada(tJuego& juego, tListaUndo& listaUndo);
+
 #endif
