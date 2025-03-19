@@ -105,7 +105,7 @@ void poner_mina(tJuego& juego, int fila, int columna) {
 						if (es_valida(juego.tableroJuego, i, j)) { // Comprueba si la posicion seleccionada por el bucle es valida
 							celdaAdyacente = dame_celda(juego.tableroJuego, i, j);
 							if (contiene_numero(celdaAdyacente)) {
-								juego.tableroJuego.datos[fila][columna].numero++; // Aumenta en 1 el numero de la celda adyacente
+								juego.tableroJuego.datos[i][j].numero++; // Aumenta en 1 el numero de la celda adyacente
 							}
 							else if (!es_mina(celdaAdyacente)) { // Comprueba que, sabiendo que en la celda adyacente no hay numero, tampoco haya mina
 								poner_numero(juego.tableroJuego.datos[i][j], 1); // Cambia el estado de la celda a NUMERO y asigna el valor 1
