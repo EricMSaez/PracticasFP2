@@ -6,7 +6,7 @@ using namespace std;
 
 //Definicion de tipos
 
-const int MAX_LISTA = 10; //Variable temporal ¡!
+const int MAX_LISTA = 100; //Variable temporal ¡!
 
 typedef struct {
 	int posx;
@@ -23,6 +23,8 @@ void inicializar_listaPosiciones(tListaPosiciones& lista_pos);
 int longitud(tListaPosiciones lista_pos);
 
 int dame_posX(tListaPosiciones lista_pos, int i);
+
+int dame_posY(tListaPosiciones lista_pos, int i);
 
 void insertar_final(tListaPosiciones& lista_pos, int x, int y);
 
