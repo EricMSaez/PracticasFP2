@@ -27,6 +27,7 @@ void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) {
 	else {
 		mostrar_cabecera();
 		mostrar_juego_consola(juego.tableroJuego);
+			cout << "Llevas " << dame_num_jugadas(juego) << " jugadas." << endl << endl;
 		pedir_pos(fila, columna);
 		if (fila == -1 && columna == -1) terminar_juego(juego);
 		else if (fila == -2 && columna == -2) {
@@ -39,6 +40,7 @@ void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) {
 		}
 		else {
 			juega(juego, fila, columna, listaPos);
+			juego.num_jugadas++;	//Aumenta el contador de jugadas
 			insertar_final(listaUndo, listaPos);
 			juega(juego, listaPos, listaUndo);
 		}

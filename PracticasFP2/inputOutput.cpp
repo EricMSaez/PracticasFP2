@@ -41,8 +41,6 @@ istream& operator>> (istream& in, tJuego& juego) {
     int nfils, ncols, nMinas, xMina, yMina;
 
     in >> nfils >> ncols >> nMinas;
-    cout << "nfils: " << nfils << " ncols: " << ncols << endl;
-
     inicializar_juego(juego, nfils, ncols);
     juego.num_minas = nMinas;
 
@@ -64,7 +62,7 @@ bool cargar_juego(tJuego& juego) {
     if (archivo.is_open()) {
         archivoAbierto = true;
 
-        archivo >> juego;
+        archivo >> juego;   //Sobrecarga del operador ">>" para cargar los datos del fichero en juego
         archivo.close();
     }
 
@@ -136,7 +134,7 @@ void mostrar_juego_consola(tTablero tablero) {
     int NFILS = tablero.nFils;
     
     // mostrar el número de jugadas del juego
-    
+
     // mostrar cabecera
     cout << "\t  |";
     for (int col = 0; col < NCOLS; col++) {
@@ -157,10 +155,7 @@ void mostrar_juego_consola(tTablero tablero) {
             cout << '|';
         }
         cout << endl;
-
         mostrar_separador(tablero);
     }
     cout << endl;
 }
-
-

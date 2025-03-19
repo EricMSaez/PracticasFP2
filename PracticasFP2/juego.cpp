@@ -13,7 +13,6 @@ void inicializar(tJuego& juego) {
 
 void inicializar_juego(tJuego& juego, int nfils, int ncols) {
 	inicializar(juego);
-	cout << "nfils: " << nfils << "ncols: " << ncols << endl;
 	inicializar_tablero(juego.tableroJuego, nfils, ncols);
 };
 
