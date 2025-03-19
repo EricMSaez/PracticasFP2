@@ -16,6 +16,7 @@ void insertar_final(tListaUndo& lista_undo, tListaPosiciones& lista_pos) {
 		lista_undo.lista[lista_undo.cont] = lista_pos;
 		lista_undo.cont++;
 	}
+	inicializar_listaPosiciones(lista_pos);
 }
 
 tListaPosiciones ultimos_movimientos(tListaUndo lista_undo) {
