@@ -13,6 +13,7 @@ void inicializar(tJuego& juego) {
 
 void inicializar_juego(tJuego& juego, int nfils, int ncols) {
 	inicializar(juego);
+	cout << "nfils: " << nfils << "ncols: " << ncols << endl;
 	inicializar_tablero(juego.tableroJuego, nfils, ncols);
 };
 
@@ -99,10 +100,9 @@ void poner_mina(tJuego& juego, int fila, int columna) {
 			for (int i = fila-1;i <= fila + 1;i++) {		// Bucle que empiza en una posicion anterior a la casilla seleccionada y termina una despues 
 				for (int j = columna - 1; j <= columna + 1;j++) {
 
-					if (i != fila || j != columna) { //Comprueba que la celda seleccionada por el bucle sea la celda donde se ha colocado la mina
+					if (i != fila || j != columna) { //Comprueba que la celda seleccionada por el bucle no sea la celda donde se ha colocado la mina
 
-						if (es_valida(juego.tableroJuego, fila, columna)) { // Comprueba si la posicion seleccionada por el bucle es valida
-
+						if (es_valida(juego.tableroJuego, i, j)) { // Comprueba si la posicion seleccionada por el bucle es valida
 							celdaAdyacente = dame_celda(juego.tableroJuego, i, j);
 							if (contiene_numero(celdaAdyacente)) {
 								juego.tableroJuego.datos[fila][columna].numero++; // Aumenta en 1 el numero de la celda adyacente

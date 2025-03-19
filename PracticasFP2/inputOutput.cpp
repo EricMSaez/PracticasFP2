@@ -41,6 +41,7 @@ istream& operator>> (istream& in, tJuego& juego) {
     int nfils, ncols, nMinas, xMina, yMina;
 
     in >> nfils >> ncols >> nMinas;
+    cout << "nfils: " << nfils << " ncols: " << ncols << endl;
 
     inicializar_juego(juego, nfils, ncols);
     juego.num_minas = nMinas;
@@ -49,7 +50,6 @@ istream& operator>> (istream& in, tJuego& juego) {
         in >> xMina >> yMina;
         poner_mina(juego, xMina, yMina);
     }
-
     return in;
 }
 
