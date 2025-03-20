@@ -6,7 +6,7 @@ int main() {
 	tJuego juego;
 	tListaPosiciones listaPos;
 	tListaUndo listaUndo;
-	inicio_juego(juego,listaPos,listaUndo);
+	inicio_juego(juego, listaPos, listaUndo);
 }
 
 
@@ -27,7 +27,7 @@ void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) {
 	else {
 		mostrar_cabecera();
 		mostrar_juego_consola(juego.tableroJuego);
-			cout << "Llevas " << dame_num_jugadas(juego) << " jugadas." << endl << endl;
+		cout << "Llevas " << dame_num_jugadas(juego) << " jugadas." << endl << endl;
 		pedir_pos(fila, columna);
 		if (fila == -1 && columna == -1) terminar_juego(juego);
 		else if (fila == -2 && columna == -2) {
@@ -38,10 +38,14 @@ void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) {
 			undoJugada(juego, listaUndo);
 			juega(juego, listaPos, listaUndo);
 		}
-		else {
+		else if (es_valida(juego.tableroJuego, fila, columna)) {
 			juega(juego, fila, columna, listaPos);
 			juego.num_jugadas++;	//Aumenta el contador de jugadas
-			insertar_final(listaUndo, listaPos);
+			insertar_final(listaUndo, listaPos, juego.tableroJuego);
+			juega(juego, listaPos, listaUndo);
+		}
+		else {
+			cout << "Posicion no valida." << endl;
 			juega(juego, listaPos, listaUndo);
 		}
 	}
@@ -64,6 +68,7 @@ void undoJugada(tJuego& juego, tListaUndo& listaUndo) {
 	tListaPosiciones listaPos;
 	listaPos = ultimos_movimientos(listaUndo);
 	listaUndo.cont--;
+	
 	for (int i = 0; i < listaPos.cont; i++) {
 		int x = dame_posX(listaPos, i);
 		int y = dame_posY(listaPos, i);
