@@ -41,11 +41,11 @@ void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) {
 		else if (es_valida(juego.tableroJuego, fila, columna)) {
 			juega(juego, fila, columna, listaPos);
 			juego.num_jugadas++;	//Aumenta el contador de jugadas
-			insertar_final(listaUndo, listaPos, juego.tableroJuego);
+			insertar_final(listaUndo, listaPos);
 			juega(juego, listaPos, listaUndo);
 		}
 		else {
-			cout << "Posicion no valida." << endl;
+			cout << endl << "Posicion no valida." << endl;
 			juega(juego, listaPos, listaUndo);
 		}
 	}
