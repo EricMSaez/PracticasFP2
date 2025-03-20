@@ -5,10 +5,11 @@ void inicializar(tListaUndo& lista_undo) {
 	lista_undo.cont = 0;
 }
 
-void insertar_final(tListaUndo& lista_undo, tListaPosiciones& lista_pos, tTablero tablero) {
-	if (lista_undo.cont == MAX_UNDO) {		//Desplaza todas las listas de posiciones en caso de que este llena la lista undo
-		for (int i = 0; i < MAX_UNDO; i++) {
-			lista_undo.lista[i] = lista_undo.lista[i + 1];
+void insertar_final(tListaUndo& lista_undo, tListaPosiciones& lista_pos) {
+
+	if (lista_undo.cont == MAX_UNDO) {
+		for (int i = MAX_UNDO-2; i > 0; i--) {
+			lista_undo.lista[i] = lista_undo.lista[i-1];
 		}
 		lista_undo.lista[0] = lista_pos;
 		lista_undo.cont++;
