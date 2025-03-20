@@ -63,6 +63,7 @@ void marcarDesmarcar(tJuego& juego) {
 void undoJugada(tJuego& juego, tListaUndo& listaUndo) {
 	tListaPosiciones listaPos;
 	listaPos = ultimos_movimientos(listaUndo);
+	listaUndo.cont--;
 	for (int i = 0; i < listaPos.cont; i++) {
 		int x = dame_posX(listaPos, i);
 		int y = dame_posY(listaPos, i);
