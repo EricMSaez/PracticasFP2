@@ -34,7 +34,7 @@ tCelda dame_celda(tTablero tablero, int fila, int columna) {
 
 bool es_valida(tTablero tablero, int fila, int columna) {
 	bool posValida = true;
-	if (fila > tablero.nFils-1 || columna > tablero.nCols-1) posValida = false;
+	if (fila > tablero.nFils || columna > tablero.nCols) posValida = false;
 	if (fila < 0 || columna < 0) posValida = false;
 	return posValida;
 }

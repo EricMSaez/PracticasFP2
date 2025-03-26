@@ -7,8 +7,8 @@
 using namespace std;
 
 //Constantes temporales, ya se vera luego lo que hay que poner ahi
-const int MAX_FILS = 10;
-const int MAX_COLS = 10;
+const int MAX_FILS = 20;
+const int MAX_COLS = 20;
 
 typedef struct {
 	int nFils, nCols;
