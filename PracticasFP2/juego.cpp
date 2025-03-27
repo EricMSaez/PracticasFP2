@@ -89,10 +89,9 @@ bool esta_terminado(tJuego juego) {
 }
 
 void poner_mina(tJuego& juego, int fila, int columna) {
-	tCelda celda = dame_celda(juego.tableroJuego, fila, columna);  // Guarda la celda de la posicion (fila x columna) en la variable celda
 	tCelda celdaAdyacente;
-
 	if (es_valida(juego.tableroJuego, fila, columna)) { // Comprueba si (fila x columna) es una posicion valida 
+		tCelda celda = dame_celda(juego.tableroJuego, fila, columna);  // Guarda la celda de la posicion (fila x columna) en la variable celda
 		if (!es_mina(celda)) { // Comprueba si en la posicion (fila x columna) hay mina 
 
 			poner_mina(juego.tableroJuego.datos[fila][columna]); //Pone mina en la celda de la posicion (fila x columna)
@@ -151,10 +150,9 @@ void juega(tJuego& juego, int fila, int columna, tListaPosiciones& lista_pos) {
 						for (int j = columna - 1; j <= columna + 1; j++) {
 
 							if (i != fila || j != columna) {	//Comprueba que la celda seleccionada por el bucle no es la que se quiere descubrir
-								if (es_valida(juego.tableroJuego, i, j) && !es_visible(dame_celda(juego.tableroJuego,i,j))) {
 									cout << "Llamada a juega con fila/columna: " << i << j << endl;
-									descubrir_celda(juego.tableroJuego.datos[i][j]);
-								}
+									//descubrir_celda(juego.tableroJuego.datos[i][j]);
+									juega(juego, i, j, lista_pos);
 							}
 						}
 					}

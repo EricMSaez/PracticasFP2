@@ -20,6 +20,7 @@ void inicio_juego(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUn
 	else juega(juego, listaPos, listaUndo);
 }
 
+/*
 void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) {
 	int fila, columna;
 	if (esta_completo(juego) || mina_explotada(juego)) {
@@ -53,6 +54,43 @@ void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) {
 		}
 	}
 }
+*/
+
+void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) {
+	int fila, columna;
+	fila = 0;
+	columna = 0;
+	while (!esta_completo(juego) && !mina_explotada(juego) && fila != -1 && columna != -1) {
+
+		mostrar_cabecera();
+		mostrar_juego_consola(juego.tableroJuego);
+		cout << "Llevas " << dame_num_jugadas(juego) << " jugadas." << endl << endl;
+
+		pedir_pos(fila, columna);
+		if (fila == -5 && columna == -5) {
+			cout << "Posicion no valida." << endl;
+		}
+
+		if (fila == -3 && columna == -3) {
+			undoJugada(juego, listaUndo);
+		}
+
+		if (fila == -2 && columna == -2) {
+			marcarDesmarcar(juego);
+		}
+
+		if (fila >= 0 && columna >= 0) {
+			if (es_valida(juego.tableroJuego, fila, columna)) {
+				juega(juego, fila, columna, listaPos);
+			}
+			else cout << "Posicion no valida." << endl;
+		}
+	}
+	terminar_juego(juego);
+}
+
+
+
 
 void terminar_juego(tJuego juego) {
 	mostrar_juego_consola(juego.tableroJuego);
