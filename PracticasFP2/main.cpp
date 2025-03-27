@@ -1,4 +1,5 @@
 #include "allHeaders.h"
+#include "main.h"
 using namespace std;
 
 int main() {
@@ -29,7 +30,9 @@ void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) {
 		mostrar_juego_consola(juego.tableroJuego);
 		cout << "Llevas " << dame_num_jugadas(juego) << " jugadas." << endl << endl;
 		pedir_pos(fila, columna);
+
 		if (fila == -1 && columna == -1) terminar_juego(juego);
+
 		else if (fila == -2 && columna == -2) {
 			marcarDesmarcar(juego);
 			juega(juego, listaPos, listaUndo);
@@ -74,4 +77,26 @@ void undoJugada(tJuego& juego, tListaUndo& listaUndo) {
 		int y = dame_posY(listaPos, i);
 		ocultar(juego, x, y);
 	}
+}
+
+int esNumero(string entrada) {
+	bool esNum = true;
+	int contador=1;
+	int resultado;
+	int longitud = entrada.length();
+	if (entrada[0] != '-' && !isdigit(entrada[0])) esNum = false;
+	else {
+		while (esNum && contador < longitud) {
+			if (!isdigit(entrada[contador])) esNum = false;
+			contador++;
+		}
+	}
+
+	if (!esNum) {
+		resultado = -5;
+	}
+	else {
+		resultado = stoi(entrada);
+	}
+	return resultado;
 }

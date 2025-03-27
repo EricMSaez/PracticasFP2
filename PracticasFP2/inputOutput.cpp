@@ -1,7 +1,9 @@
 #include "inputOutput.h"
 #include "tablero.h"
 #include "juego.h"
+#include "main.h"
 #include <iomanip>
+
 
 #include <iostream>
 
@@ -20,8 +22,11 @@ void mostrar_cabecera() {
 }
 
 void pedir_pos(int& fila, int& columna) {
+    string filaS, columnaS;
     cout << "Introduce la fila y la columna: ";
-    cin >> fila >> columna;
+    cin >> filaS >> columnaS;
+    fila = esNumero(filaS);
+    columna = esNumero(columnaS);   
 }
 
 void mostrar_resultado(tJuego juego) {
