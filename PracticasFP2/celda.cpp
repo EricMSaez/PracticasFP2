@@ -1,76 +1,76 @@
 #include "celda.h"
 
-void inicializar(tCelda& Celda) {
+void inicializar(tCelda& Celda) { //Inicializa el estado de una celda a su posicion inicial
 	Celda.visible = false;
 	Celda.estado = VACIA;
 	Celda.numero = 0;
 	Celda.marcada = false;
 }
 
-tEstado dame_estado(tCelda Celda) {
+tEstado dame_estado(tCelda Celda) { //Devuelve el estado de una celda
 	tEstado estadoCelda;
 	estadoCelda = Celda.estado;
 	return estadoCelda;
 }
 
-int dame_numero(tCelda Celda) {
+int dame_numero(tCelda Celda) { //Devuelve el numero de una celda
 	int numeroCelda;
 	numeroCelda = Celda.numero;
 	return numeroCelda;
 }
 
-bool es_visible(tCelda Celda) {
+bool es_visible(tCelda Celda) {	//Devuelve si una celda es visible o no
 	bool visibilidadCelda;
 	visibilidadCelda = Celda.visible;
 	return visibilidadCelda;
 
 }
 
-bool es_mina(tCelda Celda) {
+bool es_mina(tCelda Celda) { //Devuelve si una celda es mina o no
 	bool esMina=false;
 	if (Celda.estado == MINA) esMina = true;
 	return esMina;
 }
 
-bool esta_vacia(tCelda Celda) {
+bool esta_vacia(tCelda Celda) { //Devuelve si una celda esta vacia o no 
 	bool estaVacia = false;
 	if (Celda.estado == VACIA) estaVacia = true;
 	return estaVacia;
 }
 
-bool contiene_numero(tCelda Celda) {
+bool contiene_numero(tCelda Celda) { //Devuelve si una celda tiene numero o no
 	bool contieneNumero = false;
 	if (Celda.estado == NUMERO) contieneNumero = true;
 	return contieneNumero;
 }
 
-bool esta_marcada(tCelda Celda) {
+bool esta_marcada(tCelda Celda) { //Devuelve si una celda esta marcada o no
 	bool estaMarcada = false;
 	if (Celda.marcada) estaMarcada = true;
 	return estaMarcada;
 }
 
-void descubrir_celda(tCelda& Celda) {
+void descubrir_celda(tCelda& Celda) { //Cambia una celda a visible 
 	Celda.visible = true;
 }
 
-void ocultar_celda(tCelda& Celda) {
+void ocultar_celda(tCelda& Celda) { //Cambia una celda a no visible
 	Celda.visible = false;
 }
 
-void poner_mina(tCelda& Celda) {
+void poner_mina(tCelda& Celda) { //Cambia una celda a con mina
 	Celda.estado = MINA;
 }
 
-void marcar_celda(tCelda& Celda) {
+void marcar_celda(tCelda& Celda) { //Cambia una celda a marcada
 	Celda.marcada = true;
 }
 
-void desmarcar_celda(tCelda& Celda) {
+void desmarcar_celda(tCelda& Celda) { //Cambia una celda a no marcada
 	Celda.marcada = false;
 }
 
-void poner_numero(tCelda& Celda, int num) {
+void poner_numero(tCelda& Celda, int num) { //Asigna a una celda el estado numero y le asigna el numero introducido
 	Celda.numero = num;
 	Celda.estado = NUMERO;
 }
