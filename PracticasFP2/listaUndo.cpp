@@ -1,27 +1,31 @@
 #include "listaUndo.h"
 #include "tablero.h"
 
-void inicializar(tListaUndo& lista_undo) {
+void inicializar(tListaUndo& lista_undo) { //Inicializa el contador de la lista undo a 0
 	lista_undo.cont = 0;
 }
 
-void insertar_final(tListaUndo& lista_undo, tListaPosiciones& lista_pos) {
+void insertar_final(tListaUndo& lista_undo, tListaPosiciones& lista_pos) { //Inserta la lsita de posiciones de la ultima jugada en lista undo
 
-	if (lista_undo.cont == MAX_UNDO) {
+	//Si lista_undo esta llena se desplazan todos los elementos, descartando el de la pos 0
+	if (lista_undo.cont == MAX_UNDO) {  
 		for (int i = MAX_UNDO-2; i > 0; i--) {
 			lista_undo.lista[i] = lista_undo.lista[i-1];
 		}
 		lista_undo.lista[0] = lista_pos;
 		lista_undo.cont++;
 	}
-	else {
+	//De lo contrario se añade a la lista
+	else { 
 		lista_undo.lista[lista_undo.cont] = lista_pos;
 		lista_undo.cont++;
 	}
-	inicializar_listaPosiciones(lista_pos);
+
+	//Como la lista de posiciones ya está guardada volvemos a inizializarla
+	inicializar_listaPosiciones(lista_pos); //LLamada a inicializar_listaPosiciones de listaPosiciones.h
 }
 
-tListaPosiciones ultimos_movimientos(tListaUndo lista_undo) {
+tListaPosiciones ultimos_movimientos(tListaUndo lista_undo) { //Devuelve el ultimo elemento de lista undo
 
 	tListaPosiciones ultimaPosicion;
 	int final = lista_undo.cont;

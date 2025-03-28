@@ -1,62 +1,47 @@
 #include "inputOutput.h"
-#include "tablero.h"
-#include "juego.h"
-#include "main.h"
-#include <iomanip>
-
-
-#include <iostream>
-
-using namespace std;
-
-
-const char CHAR_MINA = '*';  // Mina
-
-
-void mostrar_separador(tTablero tablero);
-void mostrar_celda(tTablero tablero, int f, int c);
-void color_numero(int numero);
 
 void mostrar_cabecera() {
     cout << "Buscaminas" << endl << "----------" << endl;
 }
 
-void pedir_pos(int& fila, int& columna) {
+void pedir_pos(int& fila, int& columna) { //Pide la posicion al usuario
     string filaS, columnaS;
     cout << "Introduce la fila y la columna: ";
     cin >> filaS >> columnaS;
+
+    //Llama a esNumero de main.h
     fila = esNumero(filaS);
     columna = esNumero(columnaS);   
 }
 
-void mostrar_resultado(tJuego juego) {
+void mostrar_resultado(tJuego juego) { //Muestra el resultado final del juego
     
-    if (mina_explotada(juego)) {
+    if (mina_explotada(juego)) { //Llama a mina_explotada de juego.h 
         cout << "Has perdido.";
     }
-    else if (esta_completo(juego)) {
+    else if (esta_completo(juego)) { //Llama a esta_completo de juego.h
         cout << "Has ganado.";
     }
-    else cout << "Has salido del juego.";
+    else cout << "Has salido del juego."; //Indica si has decidido salir del juego (-1 -1)
 }
 
-istream& operator>> (istream& in, tJuego& juego) {
+istream& operator>> (istream& in, tJuego& juego) { //Carga los datos del fichero en el juego
 
-    //ifstream in;
     int nfils, ncols, nMinas, xMina, yMina;
 
     in >> nfils >> ncols >> nMinas;
-    inicializar_juego(juego, nfils, ncols);
+    inicializar_juego(juego, nfils, ncols); //Llama a inicializar juego de juego.h
     juego.num_minas = nMinas;
 
+    //Pone las minas en el tablero
     for (int i = 0; i < nMinas; i++) {
         in >> xMina >> yMina;
-        poner_mina(juego, xMina, yMina);
+        poner_mina(juego, xMina, yMina); //Llama a poner_mina de juego.h 
     }
     return in;
 }
 
-bool cargar_juego(tJuego& juego) {
+bool cargar_juego(tJuego& juego) { //Cargar el juego con un archivo dado por el usuario
     bool archivoAbierto = false;
     string nombre;
     cout << "Escribe el nombre del archivo: ";
