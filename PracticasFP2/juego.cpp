@@ -61,15 +61,6 @@ int dame_numero(tJuego juego, int fila, int columna) { //Devuelve el numero de l
 }
 
 bool esta_completo(tJuego juego) {
-	/*
-	int contF = juego.tableroJuego.nFils, contC = juego.tableroJuego.nCols;
-	bool esta_completo = true;
-	for (int i = 0;i < juego.tableroJuego.nFils;i++) {
-		for (int j = 0;i < juego.tableroJuego.nCols;j++) {
-			if (!es_visible(juego.tableroJuego.datos[i][j])) esta_completo = false;
-		}
-	}
-	*/
 	bool estaCompleto = false;
 	int numCeldasJugadas = juego.num_descubiertas + juego.num_minas;
 	int numCeldasTablero = juego.tableroJuego.nCols * juego.tableroJuego.nFils;
