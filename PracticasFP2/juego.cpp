@@ -61,19 +61,34 @@ int dame_numero(tJuego juego, int fila, int columna) { //Devuelve el numero de l
 }
 
 bool esta_completo(tJuego juego) {
-	bool estaCompleto = false; 
-	int numCeldasJugadas = juego.num_descubiertas + juego.num_minas; //Almacena el numero de celdas ya jugadas
-	int numCeldasTablero = juego.tableroJuego.nCols * juego.tableroJuego.nFils; //Almacena el numero de celdas totales en el tablero
-	if (numCeldasJugadas == numCeldasTablero) estaCompleto = true; //Cambia estaCompleto a true si el numero de celdas jugadas es igual al de celdas totales
+	/*
+	int contF = juego.tableroJuego.nFils, contC = juego.tableroJuego.nCols;
+	bool esta_completo = true;
+	for (int i = 0;i < juego.tableroJuego.nFils;i++) {
+		for (int j = 0;i < juego.tableroJuego.nCols;j++) {
+			if (!es_visible(juego.tableroJuego.datos[i][j])) esta_completo = false;
+		}
+	}
+	*/
+	bool estaCompleto = false;
+	int numCeldasJugadas = juego.num_descubiertas + juego.num_minas;
+	int numCeldasTablero = juego.tableroJuego.nCols * juego.tableroJuego.nFils;
+	if (numCeldasJugadas == numCeldasTablero) estaCompleto = true;
 	return estaCompleto;
 }
 
-bool mina_explotada(tJuego juego) { //Devuelve si ha explotado una mina o no en el juego
+bool mina_explotada(tJuego juego) {
 	return juego.mina_explotada;
 }
 
+bool esta_terminado(tJuego juego) {
+	bool esta_terminado = false;
+	int num_celdas = dame_num_filas(juego) * dame_num_columnas(juego) - juego.num_minas; //Guarda en num_celdas el numero de celdas SIN minas
+	if (num_celdas == juego.num_descubiertas) esta_terminado = true;
+	return esta_terminado;
+}
+
 void poner_mina(tJuego& juego, int fila, int columna) {
-	tCelda celda = dame_celda(juego.tableroJuego, fila, columna);  // Guarda la celda de la posicion (fila x columna) en la variable celda
 	tCelda celdaAdyacente;
 
 	if (es_valida(juego.tableroJuego, fila, columna)) { // Comprueba si (fila x columna) es una posicion valida

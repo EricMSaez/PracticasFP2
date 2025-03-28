@@ -1,7 +1,9 @@
 #ifndef main_h //Proteccion de inclusiones duplicadas
 #define main_h
 
+#include "allheaders.h"
 #include <iostream>
+#include <string>
 using namespace std;
 
 //cuerpo de la cabecera
@@ -15,5 +17,7 @@ void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo);
 void terminar_juego(tJuego juego);
 
 void undoJugada(tJuego& juego, tListaUndo& listaUndo);
+
+int esNumero(string entrada);
 
 #endif

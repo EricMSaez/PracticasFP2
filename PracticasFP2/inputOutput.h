@@ -2,10 +2,14 @@
 
 
 #include "colors.h"
+#include "inputOutput.h"
 #include "tablero.h"
-#include "juego.h"
+#include "main.h"
+#include <iomanip>
 #include <fstream>
+#include <iostream>
 
+using namespace std;
 const int N_HUECOS = 2; // huecos a dejar en el formato de las celdas.
 
 using namespace std;
