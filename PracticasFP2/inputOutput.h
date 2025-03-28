@@ -22,7 +22,7 @@ const char CHAR_MINA = '*';  // Mina
 
 void mostrar_cabecera();
 
-void pedir_pos(int& fila, int& columna);
+void pedir_pos(short int& fila,short int& columna);
 
 void mostrar_resultado(tJuego juego);
 

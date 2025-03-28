@@ -134,7 +134,7 @@ void ocultar(tJuego& juego, int fila, int columna)	 {
 	}
 }
 
-void juega(tJuego& juego, int fila, int columna, tListaPosiciones& lista_pos) {
+void juega(tJuego& juego,short int fila,short int columna, tListaPosiciones& lista_pos) {
 	tCelda celda = juego.tableroJuego.datos[fila][columna]; //Guarda la celda en la variable celda;
 
 	if (es_valida(juego.tableroJuego, fila, columna)) { // Comprueba si la posicion (fila x columna) es valida
@@ -149,9 +149,9 @@ void juega(tJuego& juego, int fila, int columna, tListaPosiciones& lista_pos) {
 
 				if (!es_mina(celda) && !contiene_numero(celda)) {	//Compruba si la celda no es una mina y no tiene numero
 
-					for (int i = fila - 1; i <= fila + 1; i++) {	//Recorre las celdas adyacentes
+					for (short int i = fila - 1; i <= fila + 1; i++) {	//Recorre las celdas adyacentes
 
-						for (int j = columna - 1; j <= columna + 1; j++) {
+						for (short int j = columna - 1; j <= columna + 1; j++) {
 
 							if (i != fila || j != columna) {	//Comprueba que la celda seleccionada por el bucle no es la que se quiere descubrir
 

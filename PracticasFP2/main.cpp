@@ -23,7 +23,7 @@ void inicio_juego(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUn
 }
 
 void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) { //Pide la columna a jugar, y detecta que accion se quiere llevar a cabo
-	int fila, columna;
+	short int fila, columna;
 	fila = 0; //Inicializamos el valor de la variable fila a 0
 	columna = 0; //Inicializamos el valor de la variable columna a 0
 	//Comprueba que el juego no haya terminado y que no se haya introducido -1, -1
@@ -39,20 +39,18 @@ void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) { /
 			cout << "Posicion no valida." << endl;
 		}
 
-		if (fila == -3 && columna == -3) { //Caso 2: Introducido (-3,-3). Se realiza un undo de la ultima jugada 
+		else if (fila == -3 && columna == -3) { //Caso 2: Introducido (-3,-3). Se realiza un undo de la ultima jugada 
 			undoJugada(juego, listaUndo);
 		}
 
-		if (fila == -2 && columna == -2) { //Caso 3: Introducido (-2,-2). Se marca/desmarca una celda
+		else if (fila == -2 && columna == -2) { //Caso 3: Introducido (-2,-2). Se marca/desmarca una celda
 			marcarDesmarcar(juego); //Llama a marcarDesmarcar de main.h
 		}
 
-		if (fila >= 0 && columna >= 0) { //Caso 4: La celda seleccionada es un numero valido
-			if (es_valida(juego.tableroJuego, fila, columna)) { //Comprueba si la celda seleccionada es valida
+		else if (es_valida(juego.tableroJuego, fila, columna)) { //Caso 4: La celda seleccionada es un numero valido //Comprueba si la celda seleccionada es valida
 				juega(juego, fila, columna, listaPos); //En ese caso, llama a juega de juego.h con la celda seleccionada
 			}
 			else cout << "Posicion no valida." << endl; //En caso de no ser valida. Imprime un mensaje de error
-		}
 	}
 	terminar_juego(juego); //Cuando se detecte una de las condiciones de finalizacion del juego, llama a terminar_juego de main.h
 }
@@ -67,42 +65,43 @@ void terminar_juego(tJuego juego) { //Muestra el tablero final y el resultado de
 }
 
 void marcarDesmarcar(tJuego& juego) {	//Pide posicion de una celda y la marca/desmarca 
-	int fila, columna;
-	cout << "MARCAR/DESMARCAR mina:" << endl;
-	pedir_pos(fila, columna);
-	marcar_desmarcar(juego, fila, columna);
+	short int fila, columna;
+	cout << "MARCAR/DESMARCAR mina:" << endl; 
+	pedir_pos(fila, columna); //Llamada a funcion pedir_pos de main.h
+	marcar_desmarcar(juego, fila, columna); //Llamada a marcar_desmarcar de juego.h 
 }
 
-void undoJugada(tJuego& juego, tListaUndo& listaUndo) {
+void undoJugada(tJuego& juego, tListaUndo& listaUndo) { //Deshace los movimientos almacenados en la ultima lista de posiciones
 	tListaPosiciones listaPos;
-	listaPos = ultimos_movimientos(listaUndo);
+	listaPos = ultimos_movimientos(listaUndo); //Llama a ultimos_movimientos de listaUndo.h
 	listaUndo.cont--;
 	
-	for (int i = 0; i < listaPos.cont; i++) {
-		int x = dame_posX(listaPos, i);
-		int y = dame_posY(listaPos, i);
+	for (int i = 0; i < listaPos.cont; i++) {  //Recorre todas las jugadas de la lista de posiciones
+		int x = dame_posX(listaPos, i); //Llama a dame_posx de listaPosiciones.h para guardar la coordenada x en su variable
+		int y = dame_posY(listaPos, i); //Llama a dame_posy de listaPosiciones.h para guardar la coordenada y en su variable
 		ocultar(juego, x, y);
 	}
 }
 
-int esNumero(string entrada) {
+int esNumero(string entrada) { //Comprueba si el string introducido tiene valores permitidos
 	bool esNum = true;
 	int contador=1;
-	int resultado;
-	int longitud = entrada.length();
-	if (entrada[0] != '-' && !isdigit(entrada[0])) esNum = false;
-	else {
-		while (esNum && contador < longitud) {
-			if (!isdigit(entrada[contador])) esNum = false;
-			contador++;
+	short int resultado;
+	int longitud = entrada.length();  //Guarda la longitud del string introducido en la variable longitud
+	if (entrada[0] != '-' && !isdigit(entrada[0])) { //Comprueba si el char 0 no es ni un numero ni "-"
+		esNum = false; //En ese caso, cambia la variable esNum a false
+	}
+	else { 
+		while (esNum && contador < longitud) { //Si el char 0 es valido, comprueba que el resto de char sean numeros
+			if (!isdigit(entrada[contador])) esNum = false; //Si un char no es un numero, cambia la variable esNum a false
+			contador++; //Aumenta el contador de chars comprobados
 		}
 	}
-
-	if (!esNum) {
-		resultado = -5;
+	if (!esNum) { 
+		resultado = -5; //Si el string introducido no es valido, asigna a la variable resultado -5 (numero que indica que ha entrado resultado no valido)
 	}
 	else {
-		resultado = stoi(entrada);
+		resultado = stoi(entrada); //Si el string introducido es valido, asigna a la variable resultado su valor en un int
 	}
-	return resultado;
+	return resultado; //Devuelve resultado como variable de saldia
 }

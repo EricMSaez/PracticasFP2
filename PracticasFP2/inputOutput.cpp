@@ -4,7 +4,7 @@ void mostrar_cabecera() {
     cout << "Buscaminas" << endl << "----------" << endl;
 }
 
-void pedir_pos(int& fila, int& columna) { //Pide la posicion al usuario
+void pedir_pos(short int& fila,short int& columna) { //Pide la posicion al usuario
     string filaS, columnaS;
     cout << "Introduce la fila y la columna: ";
     cin >> filaS >> columnaS;

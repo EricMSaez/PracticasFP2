@@ -55,7 +55,7 @@ void marcar_desmarcar(tJuego& juego, int fila, int columna);
 
 void ocultar(tJuego& juego, int fila, int columna);
 
-void juega(tJuego& juego, int fila, int columna, tListaPosiciones& lista_pos);
+void juega(tJuego& juego,short int fila,short int columna, tListaPosiciones& lista_pos);
 
 #endif
 
