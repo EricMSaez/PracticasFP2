@@ -80,11 +80,11 @@ bool esta_terminado(tJuego juego) {
 }
 
 void poner_mina(tJuego& juego, int fila, int columna) {
-	tCelda celdaAdyacente;
+	tCelda celdaAdyacente = dame_celda(juego.tableroJuego, fila, columna);
 
 	if (es_valida(juego.tableroJuego, fila, columna)) { // Comprueba si (fila x columna) es una posicion valida
 
-		if (!es_mina(celda)) { // Comprueba si en la posicion (fila x columna) hay mina 
+		if (!es_mina(celdaAdyacente)) { // Comprueba si en la posicion (fila x columna) hay mina 
 
 			poner_mina(juego.tableroJuego.datos[fila][columna]); //Pone mina en la celda de la posicion (fila x columna)
 
