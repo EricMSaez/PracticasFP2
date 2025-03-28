@@ -46,8 +46,6 @@ bool esta_completo(tJuego juego);
 
 bool mina_explotada(tJuego juego);
 
-bool esta_terminado(tJuego juego);
-
 void poner_mina(tJuego& juego, int fila, int columna);
 
 void marcar_desmarcar(tJuego& juego, int fila, int columna);
