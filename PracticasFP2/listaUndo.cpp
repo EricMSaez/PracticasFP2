@@ -22,7 +22,7 @@ void insertar_final(tListaUndo& lista_undo, tListaPosiciones& lista_pos) { //Ins
 	}
 
 	//Como la lista de posiciones ya está guardada volvemos a inizializarla
-	inicializar_listaPosiciones(lista_pos); //LLamada a inicializar_listaPosiciones de listaPosiciones.h
+	inicializar(lista_pos); //LLamada a inicializar de listaPosiciones.h
 }
 
 tListaPosiciones ultimos_movimientos(tListaUndo lista_undo) { //Devuelve el ultimo elemento de lista undo

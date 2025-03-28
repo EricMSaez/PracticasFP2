@@ -26,7 +26,7 @@ typedef struct {
 
 //Declaracion de las funciones
 
-void inicializar_listaPosiciones(tListaPosiciones& lista_pos);
+void inicializar(tListaPosiciones& lista_pos);
 
 int longitud(tListaPosiciones lista_pos);
 

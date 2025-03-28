@@ -163,7 +163,7 @@ void juega(tJuego& juego, int fila, int columna, tListaPosiciones& lista_pos) {
 						}
 					}
 				}
-				else if (es_mina(celda)) juego.mina_explotada = true;
+				else if (es_mina(celda)) juego.mina_explotada = true; //Si la celda seleccionada es una mina, cambia el estado del juego a mina_explotada = true 
 			}
 		}
 	}

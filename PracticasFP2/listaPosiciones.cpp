@@ -1,6 +1,6 @@
 #include "listaPosiciones.h"
 
-void inicializar_listaPosiciones(tListaPosiciones& lista_pos) { //Inicializa el contador de la lista de posiciones a 0
+void inicializar(tListaPosiciones& lista_pos) { //Inicializa el contador de la lista de posiciones a 0
 	lista_pos.cont = 0;
 }
 
