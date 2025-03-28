@@ -1,20 +1,32 @@
 #ifndef listaUndo_h //Proteccion de inclusiones duplicadas
 #define listaUndo_h
 
-#include <iostream>
+
 #include "listaPosiciones.h" //Incluimos el header "listaPosiciones.h" para poder usar tListaPosiciones
-#include "tablero.h"	//Incluimos el header "tablero.h" para poder usar tTablero
+#include <iostream>
 using namespace std;
 
-const int MAX_UNDO = 10;
+
+//Constantes
+
+const int MAX_UNDO = 10; //Numero de veces seguidas que la funcion "undo" se puede utilizar
+
+
+//Declaracion de tipos
 
 typedef struct {
 	tListaPosiciones lista[MAX_UNDO];
 	int cont;
 } tListaUndo;
 
+
+//Declaración de las funciones
+
 void inicializar(tListaUndo& lista_undo);
+
 void insertar_final(tListaUndo& lista_undo, tListaPosiciones& lista_pos);
+
 tListaPosiciones ultimos_movimientos(tListaUndo lista_undo);
+
 #endif
 

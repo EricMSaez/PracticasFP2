@@ -1,6 +1,7 @@
 #ifndef celda_h //Proteccion de inclusiones duplicadas
 #define celda_h
 
+
 #include <iostream>
 using namespace std;
 
@@ -17,8 +18,7 @@ typedef struct {
 } tCelda;
 
 
-
-// Declaración de las funciones
+// Declaracion de las funciones
 
 void inicializar(tCelda& Celda);
 

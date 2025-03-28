@@ -1,12 +1,14 @@
 #ifndef juego_h //Proteccion de inclusiones duplicadas
 #define juego_h
 
-#include <iostream>
+
 #include "tablero.h" //Incluimos el header "tablero.h" para poder usar tTablero
 #include "listaPosiciones.h" //Incluimos el header "listaPosiciones.h" para poder usar tListaPosiciones
+#include <iostream>
 using namespace std;
 
-//Definicion de tipos 
+
+//Declaracion de tipos 
 
 typedef struct {
 	tTablero tableroJuego;
@@ -16,11 +18,12 @@ typedef struct {
 	int num_descubiertas;
 } tJuego;
 
-//Definicion de funciones
 
-void inicializar(tJuego& juego);
+//Declaracion de funciones
 
-void inicializar_juego(tJuego& juego, int nfils, int ncols);
+void inicializar(tJuego& juego); //Crea un juego vacio, con el tablero vacio
+
+void inicializar_juego(tJuego& juego, int nfils, int ncols); //Crea un juego con el tablero inizializado y celdas vacías
 
 int dame_num_jugadas(tJuego juego);
 

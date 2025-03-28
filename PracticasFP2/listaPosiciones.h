@@ -1,23 +1,31 @@
 #ifndef listaPosiciones_h //Proteccion de inclusiones duplicadas
 #define listaPosiciones_h
 
+
 #include <iostream>
 using namespace std;
 
-//Definicion de tipos
 
-const int MAX_LISTA = 500; //Variable temporal ¡!
+//Constantes
+ 
+const int MAX_LISTA = 500;	//Tamaño de la lista de posiciones
+
+
+//Declaracion de tipos
 
 typedef struct {
 	int posx;
 	int posy;
 } tPosicion;
+
 typedef struct {
 	tPosicion lista[MAX_LISTA];
 	int cont;
 } tListaPosiciones;
 
-//Definicion de las funciones
+
+//Declaracion de las funciones
+
 void inicializar_listaPosiciones(tListaPosiciones& lista_pos);
 
 int longitud(tListaPosiciones lista_pos);

@@ -1,12 +1,16 @@
 #ifndef main_h //Proteccion de inclusiones duplicadas
 #define main_h
 
-#include "allheaders.h"
+
+#include "juego.h"	//Incluimos el header "juego.h" para poder usar tJuego
+//Incluimos el header "listaUndo.h" para poder usar tListaUndo (tListaPosiciones esta incluido en "listaUndo.h")
+#include "listaUndo.h"	
 #include <iostream>
 #include <string>
 using namespace std;
 
-//cuerpo de la cabecera
+
+//Declaracion de las funciones
 
 void marcarDesmarcar(tJuego& juego);
 
