@@ -35,6 +35,7 @@ void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) { /
 		cout << "Llevas " << dame_num_jugadas(juego) << " jugadas." << endl << endl; //Llamada a dame_num_jugadas de juego.h
 
 		pedir_pos(fila, columna);
+
 		if (fila == -5 && columna == -5) { //Caso 1: Valor introducido no valido
 			cout << "Posicion no valida." << endl;
 		}

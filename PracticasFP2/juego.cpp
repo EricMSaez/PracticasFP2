@@ -157,7 +157,7 @@ void juega(tJuego& juego,short int fila,short int columna, tListaPosiciones& lis
 
 								if (!contiene_mina(juego, i, j)) { //Comprueba que la celda anterior no tenga mina
 									//juega(juego, i, j, lista_pos);
-									descubrir_celda(juego.tableroJuego.datos[fila][columna]);	//Descubre la celda adyacente
+									descubrir_celda(juego.tableroJuego.datos[i][j]);	//Descubre la celda adyacente
 								}
 							}
 						}
