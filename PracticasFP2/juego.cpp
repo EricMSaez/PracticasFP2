@@ -1,7 +1,5 @@
 #include "juego.h"
-#include "tablero.h"
-#include "celda.h"
-#include "listaPosiciones.h"
+
 
 void inicializar(tJuego& juego) { //Inicializa el juego a 0
 	juego.num_jugadas = 0;

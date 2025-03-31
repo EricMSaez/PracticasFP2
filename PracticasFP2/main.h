@@ -3,8 +3,8 @@
 
 
 #include "juego.h"	//Incluimos el header "juego.h" para poder usar tJuego
-//Incluimos el header "listaUndo.h" para poder usar tListaUndo (tListaPosiciones esta incluido en "listaUndo.h")
-#include "listaUndo.h"	
+#include "listaPosiciones.h"
+#include "listaUndo.h"
 #include <iostream>
 #include <string>
 using namespace std;

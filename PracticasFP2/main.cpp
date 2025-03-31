@@ -3,7 +3,6 @@
 
 #include "allHeaders.h"
 #include "main.h"
-using namespace std;
 
 int main() {
 	cout << "Ole Ole" << endl;

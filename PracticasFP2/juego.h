@@ -1,7 +1,7 @@
 #ifndef juego_h //Proteccion de inclusiones duplicadas
 #define juego_h
 
-
+#include "celda.h" //Incluimos el header "celda.h"
 #include "tablero.h" //Incluimos el header "tablero.h" para poder usar tTablero
 #include "listaPosiciones.h" //Incluimos el header "listaPosiciones.h" para poder usar tListaPosiciones
 #include <iostream>
