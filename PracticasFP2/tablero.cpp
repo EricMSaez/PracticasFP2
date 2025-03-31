@@ -1,5 +1,4 @@
 #include "tablero.h"
-#include "celda.h"
 
 void inicializar(tTablero& tablero) {	//Inicializa el tablero sin celdas
 	tablero.nFils = 0;

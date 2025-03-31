@@ -1,7 +1,7 @@
 #ifndef listaUndo_h //Proteccion de inclusiones duplicadas
 #define listaUndo_h
 
-
+#include "tablero.h"
 #include "listaPosiciones.h" //Incluimos el header "listaPosiciones.h" para poder usar tListaPosiciones
 #include <iostream>
 using namespace std;

@@ -1,5 +1,4 @@
 #include "listaUndo.h"
-#include "tablero.h"
 
 void inicializar(tListaUndo& lista_undo) { //Inicializa el contador de la lista undo a 0
 	lista_undo.cont = 0;
