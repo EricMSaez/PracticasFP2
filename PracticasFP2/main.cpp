@@ -1,3 +1,6 @@
+// Eric Madubuogu Saez, Violeta Garcia Fernandez
+
+
 #include "allHeaders.h"
 #include "main.h"
 using namespace std;
@@ -93,6 +96,9 @@ int esNumero(string entrada) { //Comprueba si el string introducido tiene valore
 	if (entrada[0] != '-' && !isdigit(entrada[0])) { //Comprueba si el char 0 no es ni un numero ni "-"
 		esNum = false; //En ese caso, cambia la variable esNum a false
 	}
+
+	if (longitud == 1 && entrada[0]=='-') esNum = false;
+
 	else { 
 		while (esNum && contador < longitud) { //Si el char 0 es valido, comprueba que el resto de char sean numeros
 			if (!isdigit(entrada[contador])) esNum = false; //Si un char no es un numero, cambia la variable esNum a false
