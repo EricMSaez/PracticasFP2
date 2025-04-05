@@ -38,4 +38,8 @@ bool es_valida(tTablero tablero, int fila, int columna);
 
 void poner_celda(tTablero& tablero, int fila, int columna, tCelda& celda);
 
+int dame_num_columna(tTablero tablero);
+
+int dame_num_fila(tTablero tablero);
+
 #endif

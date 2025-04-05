@@ -42,3 +42,13 @@ bool es_valida(tTablero tablero, int fila, int columna) { //Devuelve true si la 
 void poner_celda(tTablero& tablero, int fila, int columna, tCelda& celda) { //Asigna el valor de la celda a la posicion
 	tablero.datos[fila][columna] = celda;
 }
+
+int dame_num_columna(tTablero tablero) {
+	int nCols = tablero.nCols;
+	return nCols;
+}
+
+int dame_num_fila(tTablero tablero) {
+	int nFils = tablero.nFils;
+	return nFils;
+}
