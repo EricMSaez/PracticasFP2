@@ -3,6 +3,7 @@
 
 
 #include "celda.h" //Incluimos el header "celda.h" para poder usar tCelda
+#include "juego.h"
 #include <iostream>
 using namespace std;
 
