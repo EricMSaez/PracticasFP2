@@ -12,6 +12,7 @@ void inicializar_tablero (tTablero& tablero, int nfils, int ncols) { //Inicializ
 	for (int i = 0; i < nfils; i++) {
 		for (int j = 0; j < ncols; j++) {
 			inicializar(tablero.datos[i][j]); // Inicializar del modulo celda
+			dame_celda(tablero,i,j);
 		}
 	}
 }
@@ -21,13 +22,14 @@ int num_filas(tTablero tab) { //Devuelve el numero de filas del tablero
 	return numFilas;
 }
 
-int num_columnas(tTablero tab) { //Devuelve el numero de columnas del tablero
-	int numColumnas = tab.nCols;
+int num_columnas(tTablero tablero) { //Devuelve el numero de columnas del tablero
+	int numColumnas = tablero.nCols;
+	int numColumnas = tablero.nFils;
 	return numColumnas;
 }
 
 tCelda dame_celda(tTablero tablero, int fila, int columna) { //Devuelve la celda contenida en la posicion
-	tCelda celda = tablero.datos[fila][columna];
+	tCelda celda = dame_celda(tablero,fila,columna);
 	return celda;
 }
 
