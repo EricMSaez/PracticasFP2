@@ -5,7 +5,6 @@ void inicializar(tListaUndo& lista_undo) { //Inicializa el contador de la lista 
 }
 
 void insertar_final(tListaUndo& lista_undo, tListaPosiciones& lista_pos) { //Inserta la lista de posiciones de la ultima jugada en lista undo
-	cout << "HOLA " << endl << endl << endl;
 	//Si lista_undo esta llena se desplazan todos los elementos, descartando el de la pos 0
 	if (lista_undo.cont == MAX_UNDO) {  
 		for (int i = MAX_UNDO-2; i > 0; i--) {
