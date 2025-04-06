@@ -20,12 +20,12 @@ int dame_num_jugadas(tJuego juego) { //Devuelve el numero de jugadas realizadas
 }
 
 int dame_num_filas(tJuego juego) { //Devuelve el numero de filas que tiene el tablero
-	int num_filas = juego.tableroJuego.nFils;
+	int num_filas = dame_num_filas(juego.tableroJuego);
 	return num_filas;
 }
 
 int dame_num_columnas(tJuego juego) { //Devuelve el numero de columnas que tiene el tablero
-	int num_columnas = juego.tableroJuego.nCols;
+	int num_columnas = dame_num_columnas(juego.tableroJuego);
 	return num_columnas;
 }
 
@@ -35,33 +35,33 @@ int dame_num_minas(tJuego juego) { //Devuelve el numero de minas que tiene el ta
 }
 
 bool contiene_mina(tJuego juego, int fila, int columna) { //Devuelve si la celda de la posicion seleccionada tiene mina
-	return es_mina(juego.tableroJuego.datos[fila][columna]); //Llamada a es_mina de celda.h
+	return es_mina(dame_celda(juego.tableroJuego, fila, columna)); //Llamada a es_mina de celda.h
 }
 
 bool es_visible(tJuego juego, int fila, int columna) { //Devuelve si la celda de la posicion seleccionada es visible
-	return es_visible(juego.tableroJuego.datos[fila][columna]); //Llamada a es_visible de celda.h
+	return es_visible(dame_celda(juego.tableroJuego, fila, columna)); //Llamada a es_visible de celda.h
 }
 
 bool esta_marcada(tJuego juego, int fila, int columna) { //Devuelve si la celda de la posicion seleccionada esta marcada
-	return esta_marcada(juego.tableroJuego.datos[fila][columna]); //Llamada a esta_marcada de celda.h 
+	return esta_marcada(dame_celda(juego.tableroJuego, fila, columna)); //Llamada a esta_marcada de celda.h 
 }
 
 bool esta_vacia(tJuego juego, int fila, int columna) { //Devuelve si la celda de la posicion seleccionada esta vacia
-	return esta_vacia(juego.tableroJuego.datos[fila][columna]); //Llamada a esta_vacia de celda.h
+	return esta_vacia(dame_celda(juego.tableroJuego, fila, columna)); //Llamada a esta_vacia de celda.h
 }
 
 bool contiene_numero(tJuego juego, int fila, int columna) { //Devuelve si la celda de la posicion seleccionada tiene numero
-	return contiene_numero(juego.tableroJuego.datos[fila][columna]); //Llamada a contiene_numero de celda.h
+	return contiene_numero(dame_celda(juego.tableroJuego, fila, columna)); //Llamada a contiene_numero de celda.h
 }
 
 int dame_numero(tJuego juego, int fila, int columna) { //Devuelve el numero de la celda de la posicion seleccionada
-	return (juego.tableroJuego.datos[fila][columna].numero); // dame_numero de celda.h
+	return (dame_numero(dame_celda(juego.tableroJuego, fila, columna))); // dame_numero de celda.h
 }
 
 bool esta_completo(tJuego juego) {
 	bool estaCompleto = false;
 	int numCeldasJugadas = juego.num_descubiertas + juego.num_minas;
-	int numCeldasTablero = juego.tableroJuego.nCols * juego.tableroJuego.nFils;
+	int numCeldasTablero = dame_num_columnas(juego) * dame_num_filas(juego);
 	if (numCeldasJugadas == numCeldasTablero) estaCompleto = true;
 	return estaCompleto;
 }

@@ -17,19 +17,18 @@ void inicializar_tablero (tTablero& tablero, int nfils, int ncols) { //Inicializ
 	}
 }
 
-int num_filas(tTablero tab) { //Devuelve el numero de filas del tablero
-	int numFilas = tab.nFils;
-	return numFilas;
+int dame_num_columnas(tTablero tablero) {
+	int nCols = tablero.nCols;
+	return nCols;
 }
 
-int num_columnas(tTablero tablero) { //Devuelve el numero de columnas del tablero
-	int numColumnas = tablero.nCols;
-	int numColumnas = tablero.nFils;
-	return numColumnas;
+int dame_num_filas(tTablero tablero) {
+	int nFils = tablero.nFils;
+	return nFils;
 }
 
 tCelda dame_celda(tTablero tablero, int fila, int columna) { //Devuelve la celda contenida en la posicion
-	tCelda celda = dame_celda(tablero,fila,columna);
+	tCelda celda = tablero.datos[fila][columna];
 	return celda;
 }
 
@@ -45,12 +44,3 @@ void poner_celda(tTablero& tablero, int fila, int columna, tCelda& celda) { //As
 	tablero.datos[fila][columna] = celda;
 }
 
-int dame_num_columna(tTablero tablero) {
-	int nCols = tablero.nCols;
-	return nCols;
-}
-
-int dame_num_fila(tTablero tablero) {
-	int nFils = tablero.nFils;
-	return nFils;
-}

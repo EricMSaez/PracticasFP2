@@ -3,7 +3,6 @@
 
 
 #include "celda.h" //Incluimos el header "celda.h" para poder usar tCelda
-#include "juego.h"
 #include <iostream>
 using namespace std;
 
@@ -29,9 +28,9 @@ void inicializar(tTablero& tablero); // Inicializar tablero sin celdas
 
 void inicializar_tablero(tTablero& tablero, int nfils, int ncols); // Inicializar tablero con celdas vacías
 
-int num_filas(tTablero tab);
+int dame_num_columnas(tTablero tablero);
 
-int num_columnas(tTablero tab);
+int dame_num_filas(tTablero tablero);
 
 tCelda dame_celda(tTablero tablero, int fila, int columna);
 
@@ -39,8 +38,8 @@ bool es_valida(tTablero tablero, int fila, int columna);
 
 void poner_celda(tTablero& tablero, int fila, int columna, tCelda& celda);
 
-int dame_num_columna(tTablero tablero);
+int dame_num_columnas(tTablero tablero);
 
-int dame_num_fila(tTablero tablero);
+int dame_num_filas(tTablero tablero);
 
 #endif
