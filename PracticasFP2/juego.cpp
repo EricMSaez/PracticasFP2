@@ -20,12 +20,12 @@ int dame_num_jugadas(tJuego juego) { //Devuelve el numero de jugadas realizadas
 }
 
 int dame_num_filas(tJuego juego) { //Devuelve el numero de filas que tiene el tablero
-	int num_filas = dame_num_filas(juego.tableroJuego);
+	int num_filas = dame_num_filas(juego);
 	return num_filas;
 }
 
 int dame_num_columnas(tJuego juego) { //Devuelve el numero de columnas que tiene el tablero
-	int num_columnas = dame_num_columnas(juego.tableroJuego);
+	int num_columnas = dame_num_columnas(juego);
 	return num_columnas;
 }
 
@@ -133,7 +133,7 @@ void ocultar(tJuego& juego, int fila, int columna)	 {
 }
 
 void juega(tJuego& juego,short int fila,short int columna, tListaPosiciones& lista_pos) {
-	tCelda celda = juego.tableroJuego.datos[fila][columna]; //Guarda la celda en la variable celda;
+	tCelda celda = dame_celda(juego.tableroJuego, fila, columna);; //Guarda la celda en la variable celda;
 
 	if (es_valida(juego.tableroJuego, fila, columna)) { // Comprueba si la posicion (fila x columna) es valida
 
@@ -142,6 +142,7 @@ void juega(tJuego& juego,short int fila,short int columna, tListaPosiciones& lis
 			if (!esta_marcada(celda)) {	//Comprueba si la celda en la posicion (fila x columna) no esta marcada
 
 				descubrir_celda(juego.tableroJuego.datos[fila][columna]);	//Descubre la celda en la posicion (fila x columna)
+				
 				juego.num_descubiertas++;  //Aumenta el numero de celdas descubiertas
 				insertar_final(lista_pos, fila, columna);	//Añade (fila x columna) a la lista de posiciones
 
@@ -152,12 +153,13 @@ void juega(tJuego& juego,short int fila,short int columna, tListaPosiciones& lis
 						for (short int j = columna - 1; j <= columna + 1; j++) {
 
 							if (i != fila || j != columna) {	//Comprueba que la celda seleccionada por el bucle no es la que se quiere descubrir
-								if (es_valida(juego.tableroJuego, i, j) && !es_visible(juego.tableroJuego.datos[i][j])) {
+								if (es_valida(juego.tableroJuego, i, j) && !es_visible(dame_celda(juego.tableroJuego, i, j))) {
 									if (!contiene_mina(juego, i, j)) { //Comprueba que la celda anterior no tenga mina
 										//juega(juego, i, j, lista_pos);
 										descubrir_celda(juego.tableroJuego.datos[i][j]);	//Descubre la celda adyacente
 										insertar_final(lista_pos, i, j);
 										juego.num_descubiertas++;
+									
 									}
 								}
 							}
