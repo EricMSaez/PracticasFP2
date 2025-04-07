@@ -144,7 +144,6 @@ void juega(tJuego& juego, const int& fila, const int& columna, tListaPosiciones&
 				descubrir_celda(juego.tableroJuego.datos[fila][columna]);	//Descubre la celda en la posicion (fila x columna)
 				
 				juego.num_descubiertas++;  //Aumenta el numero de celdas descubiertas
-				juego.num_jugadas++;  //Aumenta el numero de jugadas realizadas
 				insertar_final(lista_pos, fila, columna);	//Añade (fila x columna) a la lista de posiciones
 
 				if (!es_mina(celda) && !contiene_numero(celda)) {	//Compruba si la celda no es una mina y no tiene numero
@@ -157,10 +156,6 @@ void juega(tJuego& juego, const int& fila, const int& columna, tListaPosiciones&
 								if (es_valida(juego.tableroJuego, i, j) && !es_visible(dame_celda(juego.tableroJuego, i, j))) {
 									if (!contiene_mina(juego, i, j)) { //Comprueba que la celda anterior no tenga mina
 										juega(juego, i, j, lista_pos);
-										//descubrir_celda(juego.tableroJuego.datos[i][j]);	//Descubre la celda adyacente
-										//insertar_final(lista_pos, i, j);
-										//juego.num_descubiertas++;
-									
 									}
 								}
 							}
