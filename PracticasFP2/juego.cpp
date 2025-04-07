@@ -20,12 +20,12 @@ int dame_num_jugadas(tJuego juego) { //Devuelve el numero de jugadas realizadas
 }
 
 int dame_num_filas(tJuego juego) { //Devuelve el numero de filas que tiene el tablero
-	int num_filas = dame_num_filas(juego);
+	int num_filas = dame_num_filas(juego.tableroJuego);
 	return num_filas;
 }
 
 int dame_num_columnas(tJuego juego) { //Devuelve el numero de columnas que tiene el tablero
-	int num_columnas = dame_num_columnas(juego);
+	int num_columnas = dame_num_columnas(juego.tableroJuego);
 	return num_columnas;
 }
 
