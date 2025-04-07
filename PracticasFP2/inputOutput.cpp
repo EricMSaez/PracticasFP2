@@ -14,7 +14,7 @@ void pedir_pos(short int& fila,short int& columna) { //Pide la posicion al usuar
     columna = esNumero(columnaS);   
 }
 
-void mostrar_resultado(tJuego juego) { //Muestra el resultado final del juego
+void mostrar_resultado(const tJuego& juego) { //Muestra el resultado final del juego
     
     if (mina_explotada(juego)) { //Llama a mina_explotada de juego.h 
         cout << "Has perdido.";
@@ -59,7 +59,7 @@ bool cargar_juego(tJuego& juego) { //Cargar el juego con un archivo dado por el 
     return archivoAbierto;
 }
 
-void color_numero(int numero) {
+void color_numero(const int& numero) {
     switch (numero) {
     case 1: cout << BLUE; break;
     case 2: cout << GREEN; break;
@@ -73,7 +73,7 @@ void color_numero(int numero) {
 }
 
 
-void mostrar_separador(tTablero tablero) {
+void mostrar_separador(const tTablero& tablero) {
 
     int NCOLS = tablero.nCols;
     int NFILS = tablero.nFils;
@@ -85,7 +85,7 @@ void mostrar_separador(tTablero tablero) {
     cout << endl;
 }
 
-void mostrar_celda(tTablero tablero, int fila, int columna) {
+void mostrar_celda(const tTablero& tablero, const int& fila, const int& columna) {
     if (!tablero.datos[fila][columna].visible && !tablero.datos[fila][columna].marcada) {
         cout << BG_GRAY << GRAY << N_HUECOS << setfill(' ') << ' ' << RESET;
     }
@@ -118,7 +118,7 @@ void mostrar_celda(tTablero tablero, int fila, int columna) {
 }
 
 
-void mostrar_juego_consola(tTablero tablero) {
+void mostrar_juego_consola(const tTablero& tablero) {
 
     int NCOLS = tablero.nCols;
     int NFILS = tablero.nFils;

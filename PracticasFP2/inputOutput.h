@@ -24,15 +24,15 @@ void mostrar_cabecera();
 
 void pedir_pos(short int& fila,short int& columna);
 
-void mostrar_resultado(tJuego juego);
+void mostrar_resultado(const tJuego& juego);
 
 bool cargar_juego(tJuego& juego);
 
-void color_numero(int numero);
+void color_numero(const int& numero);
 
-void mostrar_separador(tTablero tablero);
+void mostrar_separador(const tTablero& tablero);
 
-void mostrar_celda(tTablero tablero, int f, int c);
+void mostrar_celda(const tTablero& tablero, const int& f, const int& c);
 
-void mostrar_juego_consola(tTablero tablero);
+void mostrar_juego_consola(const tTablero& tablero);
 #endif
