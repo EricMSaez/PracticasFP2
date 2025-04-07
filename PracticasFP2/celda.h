@@ -22,19 +22,19 @@ typedef struct {
 
 void inicializar(tCelda& Celda);
 
-tEstado dame_estado(tCelda Celda);
+tEstado dame_estado(const tCelda& Celda);
 
-int dame_numero(tCelda Celda);
+int dame_numero(const tCelda& Celda);
 
-bool es_visible(tCelda Celda);
+bool es_visible(const tCelda& Celda);
 
-bool es_mina(tCelda Celda);
+bool es_mina(const tCelda& Celda);
 
-bool esta_vacia(tCelda Celda);
+bool esta_vacia(const tCelda& Celda);
 
-bool contiene_numero(tCelda Celda);
+bool contiene_numero(const tCelda& Celda);
 
-bool esta_marcada(tCelda Celda);
+bool esta_marcada(const tCelda& Celda);
 
 void descubrir_celda(tCelda& Celda);
 
@@ -46,7 +46,7 @@ void marcar_celda(tCelda& Celda);
 
 void desmarcar_celda(tCelda& celda);
 
-void poner_numero(tCelda& Celda, int num);
+void poner_numero(tCelda& Celda, const int& num);
 
 
 #endif
