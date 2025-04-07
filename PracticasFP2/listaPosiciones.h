@@ -28,12 +28,12 @@ typedef struct {
 
 void inicializar(tListaPosiciones& lista_pos);
 
-int longitud(tListaPosiciones lista_pos);
+int longitud(const tListaPosiciones& lista_pos);
 
-int dame_posX(tListaPosiciones lista_pos, int i);
+int dame_posX(const tListaPosiciones& lista_pos, const int& i);
 
-int dame_posY(tListaPosiciones lista_pos, int i);
+int dame_posY(const tListaPosiciones& lista_pos, const int& i);
 
-void insertar_final(tListaPosiciones& lista_pos, int x, int y);
+void insertar_final(tListaPosiciones& lista_pos, const int& x, const int& y);
 
 #endif

@@ -26,7 +26,7 @@ typedef struct {
 
 void inicializar(tTablero& tablero); // Inicializar tablero sin celdas
 
-void inicializar_tablero(tTablero& tablero, int nfils, int ncols); // Inicializar tablero con celdas vacías
+void inicializar_tablero(tTablero& tablero, const int& nfils, const int& ncols); // Inicializar tablero con celdas vacías
 
 int dame_num_columnas(const tTablero& tablero);
 

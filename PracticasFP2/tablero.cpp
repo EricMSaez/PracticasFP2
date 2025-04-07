@@ -5,7 +5,7 @@ void inicializar(tTablero& tablero) {	//Inicializa el tablero sin celdas
 	tablero.nCols = 0;
 }
 
-void inicializar_tablero (tTablero& tablero, int nfils, int ncols) { //Inicializa el tablero con celdas vacías
+void inicializar_tablero (tTablero& tablero, const int& nfils, const int& ncols) { //Inicializa el tablero con celdas vacías
 	tablero.nFils = nfils;
 	tablero.nCols = ncols;
 
