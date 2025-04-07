@@ -28,18 +28,18 @@ void inicializar(tTablero& tablero); // Inicializar tablero sin celdas
 
 void inicializar_tablero(tTablero& tablero, int nfils, int ncols); // Inicializar tablero con celdas vacías
 
-int dame_num_columnas(tTablero tablero);
+int dame_num_columnas(const tTablero& tablero);
 
-int dame_num_filas(tTablero tablero);
+int dame_num_filas(const tTablero& tablero);
 
-tCelda dame_celda(tTablero tablero, int fila, int columna);
+tCelda dame_celda(const tTablero& tablero, const int& fila, const int& columna);
 
-bool es_valida(tTablero tablero, int fila, int columna);
+bool es_valida(const tTablero& tablero, const int& fila, const int& columna);
 
-void poner_celda(tTablero& tablero, int fila, int columna, tCelda& celda);
+void poner_celda(tTablero& tablero, const int& fila, const int& columna, tCelda& celda);
 
-int dame_num_columnas(tTablero tablero);
+int dame_num_columnas(const tTablero& tablero);
 
-int dame_num_filas(tTablero tablero);
+int dame_num_filas(const tTablero& tablero);
 
 #endif

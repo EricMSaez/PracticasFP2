@@ -16,46 +16,46 @@ typedef struct {
 	bool mina_explotada;
 	int num_minas;
 	int num_descubiertas;
-} tJuego;
+} tJuego;	
 
 
 //Declaracion de funciones
 
 void inicializar(tJuego& juego); //Crea un juego vacio, con el tablero vacio
 
-void inicializar_juego(tJuego& juego, int nfils, int ncols); //Crea un juego con el tablero inizializado y celdas vacías
+void inicializar_juego(tJuego& juego, const int& nfils, const int& ncols); //Crea un juego con el tablero inizializado y celdas vacías
 
-int dame_num_jugadas(tJuego juego);
+int dame_num_jugadas(const tJuego& juego);
 
-int dame_num_filas(tJuego juego);
+int dame_num_filas(const tJuego& juego);
 
-int dame_num_columnas(tJuego juego);
+int dame_num_columnas(const tJuego& juego);
 
-int dame_num_minas(tJuego juego);
+int dame_num_minas(const tJuego& juego);
 
-bool contiene_mina(tJuego juego, int fila, int columna);
+bool contiene_mina(const tJuego& juego, const int& fila, const int& columna);
 
-bool es_visible(tJuego juego, int fila, int columna);
+bool es_visible(const tJuego& juego, const int& fila, const int& columna);
 
-bool esta_marcada(tJuego, int fila, int columna);
+bool esta_marcada(const tJuego& juego, const int& fila, const int& columna);
 
-bool esta_vacia(tJuego juego, int fila, int columna);
+bool esta_vacia(const tJuego& juego, const int& fila, const int& columna);
 
-bool contiene_numero(tJuego juego, int fila, int columna);
+bool contiene_numero(const tJuego& juego, const int& fila, const int& columna);
 
-int dame_numero(tJuego juego, int fila, int columna);
+int dame_numero(const tJuego& juego, const int& fila, const int& columna);
 
-bool esta_completo(tJuego juego);
+bool esta_completo(const tJuego& juego);
 
-bool mina_explotada(tJuego juego);
+bool mina_explotada(const tJuego& juego);
 
-void poner_mina(tJuego& juego, int fila, int columna);
+void poner_mina(tJuego& juego, const int& fila, const int& columna);
 
-void marcar_desmarcar(tJuego& juego, int fila, int columna);
+void marcar_desmarcar(tJuego& juego, const int& fila, const int& columna);
 
-void ocultar(tJuego& juego, int fila, int columna);
+void ocultar(tJuego& juego, const int& fila, const int& columna);
 
-void juega(tJuego& juego,short int fila,short int columna, tListaPosiciones& lista_pos);
+void juega(tJuego& juego, const int& fila,const int& columna, tListaPosiciones& lista_pos);
 
 #endif
 

@@ -9,56 +9,56 @@ void inicializar(tJuego& juego) { //Inicializa el juego a 0
 	inicializar(juego.tableroJuego); //Llamada a funcion inicializar de tablero.h
 }
 
-void inicializar_juego(tJuego& juego, int nfils, int ncols) { //Inicializa el juego con el numero de filas y columnas seleccionado
+void inicializar_juego(tJuego& juego, const int& nfils, const int& ncols) { //Inicializa el juego con el numero de filas y columnas seleccionado
 	inicializar(juego); //Llamada a inicializar juego a 0
 	inicializar_tablero(juego.tableroJuego, nfils, ncols); //Llamada a inicializar de tablero.h con el numero de filas y columnas seleccionado
 };
 
-int dame_num_jugadas(tJuego juego) { //Devuelve el numero de jugadas realizadas
+int dame_num_jugadas(const tJuego& juego) { //Devuelve el numero de jugadas realizadas
 	int num_jugadas = juego.num_jugadas;
 	return num_jugadas;
 }
 
-int dame_num_filas(tJuego juego) { //Devuelve el numero de filas que tiene el tablero
+int dame_num_filas(const tJuego& juego) { //Devuelve el numero de filas que tiene el tablero
 	int num_filas = dame_num_filas(juego.tableroJuego);
 	return num_filas;
 }
 
-int dame_num_columnas(tJuego juego) { //Devuelve el numero de columnas que tiene el tablero
+int dame_num_columnas(const tJuego& juego) { //Devuelve el numero de columnas que tiene el tablero
 	int num_columnas = dame_num_columnas(juego.tableroJuego);
 	return num_columnas;
 }
 
-int dame_num_minas(tJuego juego) { //Devuelve el numero de minas que tiene el tablero
+int dame_num_minas(const tJuego& juego) { //Devuelve el numero de minas que tiene el tablero
 	int num_minas = juego.num_minas;
 	return num_minas;
 }
 
-bool contiene_mina(tJuego juego, int fila, int columna) { //Devuelve si la celda de la posicion seleccionada tiene mina
+bool contiene_mina(const tJuego& juego, const int& fila, const int& columna) { //Devuelve si la celda de la posicion seleccionada tiene mina
 	return es_mina(dame_celda(juego.tableroJuego, fila, columna)); //Llamada a es_mina de celda.h
 }
 
-bool es_visible(tJuego juego, int fila, int columna) { //Devuelve si la celda de la posicion seleccionada es visible
+bool es_visible(const tJuego& juego, const int& fila, const int& columna) { //Devuelve si la celda de la posicion seleccionada es visible
 	return es_visible(dame_celda(juego.tableroJuego, fila, columna)); //Llamada a es_visible de celda.h
 }
 
-bool esta_marcada(tJuego juego, int fila, int columna) { //Devuelve si la celda de la posicion seleccionada esta marcada
+bool esta_marcada(const tJuego& juego, const int& fila, const int& columna) { //Devuelve si la celda de la posicion seleccionada esta marcada
 	return esta_marcada(dame_celda(juego.tableroJuego, fila, columna)); //Llamada a esta_marcada de celda.h 
 }
 
-bool esta_vacia(tJuego juego, int fila, int columna) { //Devuelve si la celda de la posicion seleccionada esta vacia
+bool esta_vacia(const tJuego& juego, const int& fila, const int& columna) { //Devuelve si la celda de la posicion seleccionada esta vacia
 	return esta_vacia(dame_celda(juego.tableroJuego, fila, columna)); //Llamada a esta_vacia de celda.h
 }
 
-bool contiene_numero(tJuego juego, int fila, int columna) { //Devuelve si la celda de la posicion seleccionada tiene numero
+bool contiene_numero(const tJuego& juego, const int& fila, const int& columna) { //Devuelve si la celda de la posicion seleccionada tiene numero
 	return contiene_numero(dame_celda(juego.tableroJuego, fila, columna)); //Llamada a contiene_numero de celda.h
 }
 
-int dame_numero(tJuego juego, int fila, int columna) { //Devuelve el numero de la celda de la posicion seleccionada
+int dame_numero(const tJuego& juego, const int& fila, const int& columna) { //Devuelve el numero de la celda de la posicion seleccionada
 	return (dame_numero(dame_celda(juego.tableroJuego, fila, columna))); // dame_numero de celda.h
 }
 
-bool esta_completo(tJuego juego) {
+bool esta_completo(const tJuego& juego) {
 	bool estaCompleto = false;
 	int numCeldasJugadas = juego.num_descubiertas + juego.num_minas;
 	int numCeldasTablero = dame_num_columnas(juego) * dame_num_filas(juego);
@@ -66,18 +66,18 @@ bool esta_completo(tJuego juego) {
 	return estaCompleto;
 }
 
-bool mina_explotada(tJuego juego) {
+bool mina_explotada(const tJuego& juego) {
 	return juego.mina_explotada;
 }
 
-bool esta_terminado(tJuego juego) {
+bool esta_terminado(const tJuego& juego) {
 	bool esta_terminado = false;
 	int num_celdas = dame_num_filas(juego) * dame_num_columnas(juego) - juego.num_minas; //Guarda en num_celdas el numero de celdas SIN minas
 	if (num_celdas == juego.num_descubiertas) esta_terminado = true;
 	return esta_terminado;
 }
 
-void poner_mina(tJuego& juego, int fila, int columna) {
+void poner_mina(tJuego& juego, const int& fila, const int& columna) {
 	tCelda celdaAdyacente = dame_celda(juego.tableroJuego, fila, columna);
 
 	if (es_valida(juego.tableroJuego, fila, columna)) { // Comprueba si (fila x columna) es una posicion valida
@@ -109,7 +109,7 @@ void poner_mina(tJuego& juego, int fila, int columna) {
 	}
 }
 
-void marcar_desmarcar(tJuego& juego, int fila, int columna) {
+void marcar_desmarcar(tJuego& juego, const int& fila, const int& columna) {
 
 	if (es_valida(juego.tableroJuego, fila, columna)) {  // Comprueba si la posicion (fila x columna) es valida
 
@@ -121,7 +121,7 @@ void marcar_desmarcar(tJuego& juego, int fila, int columna) {
 	}
 }
 
-void ocultar(tJuego& juego, int fila, int columna)	 {
+void ocultar(tJuego& juego, const int& fila, const int& columna)	 {
 
 	if (es_valida(juego.tableroJuego, fila, columna)) { // Comprueba si la posicion (fila x columna) es valida
 
@@ -132,7 +132,7 @@ void ocultar(tJuego& juego, int fila, int columna)	 {
 	}
 }
 
-void juega(tJuego& juego,short int fila,short int columna, tListaPosiciones& lista_pos) {
+void juega(tJuego& juego, const int& fila, const int& columna, tListaPosiciones& lista_pos) {
 	tCelda celda = dame_celda(juego.tableroJuego, fila, columna);; //Guarda la celda en la variable celda;
 
 	if (es_valida(juego.tableroJuego, fila, columna)) { // Comprueba si la posicion (fila x columna) es valida

@@ -17,22 +17,22 @@ void inicializar_tablero (tTablero& tablero, int nfils, int ncols) { //Inicializ
 	}
 }
 
-int dame_num_columnas(tTablero tablero) {
+int dame_num_columnas(const tTablero& tablero) {
 	int nCols = tablero.nCols;
 	return nCols;
 }
 
-int dame_num_filas(tTablero tablero) {
+int dame_num_filas(const tTablero& tablero) {
 	int nFils = tablero.nFils;
 	return nFils;
 }
 
-tCelda dame_celda(tTablero tablero, int fila, int columna) { //Devuelve la celda contenida en la posicion
+tCelda dame_celda(const tTablero& tablero, const int& fila, const int& columna) { //Devuelve la celda contenida en la posicion
 	tCelda celda = tablero.datos[fila][columna];
 	return celda;
 }
 
-bool es_valida(tTablero tablero, int fila, int columna) { //Devuelve true si la posicion es valida dentro del tablero
+bool es_valida(const tTablero& tablero, const int& fila, const int& columna) { //Devuelve true si la posicion es valida dentro del tablero
 	bool posValida = true;
 	//Comprueba si la posicion no es mayor que la longitud del tablero y no es menor que 0
 	if (fila > tablero.nFils-1 || columna > tablero.nCols-1) posValida = false; 
@@ -40,7 +40,7 @@ bool es_valida(tTablero tablero, int fila, int columna) { //Devuelve true si la 
 	return posValida;
 }
 
-void poner_celda(tTablero& tablero, int fila, int columna, tCelda& celda) { //Asigna el valor de la celda a la posicion
+void poner_celda(tTablero& tablero, const int& fila, const int& columna, tCelda& celda) { //Asigna el valor de la celda a la posicion
 	tablero.datos[fila][columna] = celda;
 }
 
