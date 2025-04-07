@@ -53,6 +53,7 @@ void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) { /
 		else if (es_valida(juego.tableroJuego, fila, columna)) { //Caso 4: La celda seleccionada es un numero valido //Comprueba si la celda seleccionada es valida
 				juega(juego, fila, columna, listaPos); //En ese caso, llama a juega de juego.h con la celda seleccionada
 				insertar_final(listaUndo, listaPos); //Inserta la listaPosiciones en la listaUndo
+				juego.num_jugadas++;
 			}
 			else cout << "Posicion no valida." << endl; //En caso de no ser valida. Imprime un mensaje de error
 	}
