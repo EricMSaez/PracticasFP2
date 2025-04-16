@@ -1,4 +1,5 @@
 #include "inputOutput.h"
+#include "inputOutput.h"
 
 void mostrar_cabecera() {
     cout << "Buscaminas" << endl << "----------" << endl;
@@ -75,8 +76,8 @@ void color_numero(const int& numero) {
 
 void mostrar_separador(const tTablero& tablero) {
 
-    int NCOLS = tablero.nCols;
-    int NFILS = tablero.nFils;
+    int NCOLS = dame_num_columnas(tablero);  
+    int NFILS = dame_num_filas(tablero);
 
     cout << "\t -+";
     for (int col = 0; col < NCOLS; ++col) {
@@ -86,22 +87,23 @@ void mostrar_separador(const tTablero& tablero) {
 }
 
 void mostrar_celda(const tTablero& tablero, const int& fila, const int& columna) {
-    if (!tablero.datos[fila][columna].visible && !tablero.datos[fila][columna].marcada) {
+    tCelda celda = dame_celda(tablero, fila, columna);
+    if (!es_visible(celda)&& !esta_marcada(celda)) {
         cout << BG_GRAY << GRAY << N_HUECOS << setfill(' ') << ' ' << RESET;
     }
     else {
         cout << BG_BLACK << BLACK;
-        if (!tablero.datos[fila][columna].marcada) {
-            if (tablero.datos[fila][columna].estado == MINA) {
+        if (!esta_marcada(celda)) {
+            if (es_mina(celda)) {
                 cout << RED << setw(N_HUECOS) << setfill(' ') << CHAR_MINA << RESET;
             }
             else {
-                if (tablero.datos[fila][columna].estado == VACIA) {
+                if (esta_vacia(celda)) {
                     cout << setw(N_HUECOS) << setfill(' ') << ' ' << RESET;
                 }
                 else {
-                    if (tablero.datos[fila][columna].estado == NUMERO) {
-                        int numero = tablero.datos[fila][columna].numero;
+                    if (contiene_numero(celda)) {     
+                        int numero = dame_numero(celda);
                         color_numero(numero);
                         cout << setw(N_HUECOS) << setfill(' ') << numero << RESET;
                     }

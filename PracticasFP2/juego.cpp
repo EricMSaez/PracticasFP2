@@ -60,7 +60,7 @@ int dame_numero(const tJuego& juego, const int& fila, const int& columna) { //De
 
 bool esta_completo(const tJuego& juego) {
 	bool estaCompleto = false;
-	int numCeldasJugadas = juego.num_descubiertas + juego.num_minas;
+	int numCeldasJugadas = juego.num_descubiertas + dame_num_minas(juego);
 	int numCeldasTablero = dame_num_columnas(juego) * dame_num_filas(juego);
 	if (numCeldasJugadas == numCeldasTablero) estaCompleto = true;
 	return estaCompleto;
@@ -72,19 +72,19 @@ bool mina_explotada(const tJuego& juego) {
 
 bool esta_terminado(const tJuego& juego) {
 	bool esta_terminado = false;
-	int num_celdas = dame_num_filas(juego) * dame_num_columnas(juego) - juego.num_minas; //Guarda en num_celdas el numero de celdas SIN minas
+	int num_celdas = dame_num_filas(juego) * dame_num_columnas(juego) - dame_num_minas(juego); //Guarda en num_celdas el numero de celdas SIN minas
 	if (num_celdas == juego.num_descubiertas) esta_terminado = true;
 	return esta_terminado;
 }
 
 void poner_mina(tJuego& juego, const int& fila, const int& columna) {
-	tCelda celdaAdyacente = dame_celda(juego.tableroJuego, fila, columna);
+	tCelda celda = dame_celda(juego.tableroJuego, fila, columna);
 
 	if (es_valida(juego.tableroJuego, fila, columna)) { // Comprueba si (fila x columna) es una posicion valida
 
-		if (!es_mina(celdaAdyacente)) { // Comprueba si en la posicion (fila x columna) hay mina 
+		if (!es_mina(celda)) { // Comprueba si en la posicion (fila x columna) hay mina 
 
-			poner_mina(juego.tableroJuego.datos[fila][columna]); //Pone mina en la celda de la posicion (fila x columna)
+			poner_mina(celda); //Pone mina en la celda de la posicion (fila x columna)
 
 			for (int i = fila-1;i <= fila + 1;i++) {		// Bucle que recorre las ocho celdas adyacentes a la seleccionada 
 				for (int j = columna - 1; j <= columna + 1;j++) {
@@ -93,10 +93,10 @@ void poner_mina(tJuego& juego, const int& fila, const int& columna) {
 
 						if (es_valida(juego.tableroJuego, i, j)) { // Comprueba si la posicion seleccionada por el bucle es valida
 
-							celdaAdyacente = dame_celda(juego.tableroJuego, i, j); //Guarda la celda adyacente en la variable celdaAdyacente
+							tCelda celdaAdyacente = dame_celda(juego.tableroJuego, i, j); //Guarda la celda adyacente en la variable celdaAdyacente
 
 							if (contiene_numero(celdaAdyacente)) { //Comprueba si la celda adyacente tiene numero, en tal caso lo aumenta 1
-								juego.tableroJuego.datos[i][j].numero++; 
+								celdaAdyacente.numero++; 
 							}
 							else if (!es_mina(celdaAdyacente)) { // Comprueba si celda adyacente no hay mina
 								poner_numero(juego.tableroJuego.datos[i][j], 1); // En ese caso, cambia el estado de la celda a NUMERO y asigna el valor 1
@@ -111,11 +111,13 @@ void poner_mina(tJuego& juego, const int& fila, const int& columna) {
 
 void marcar_desmarcar(tJuego& juego, const int& fila, const int& columna) {
 
+	tCelda celda = dame_celda(juego.tableroJuego, fila, columna);
+
 	if (es_valida(juego.tableroJuego, fila, columna)) {  // Comprueba si la posicion (fila x columna) es valida
 
-		if (esta_marcada(juego.tableroJuego.datos[fila][columna])) { // Comprueba si la celda de la posicion (fila x columna) esta marcada
+		if (esta_marcada(celda)) { // Comprueba si la celda de la posicion (fila x columna) esta marcada
 
-			desmarcar_celda(juego.tableroJuego.datos[fila][columna]); // En ese caso, la desmarca
+			desmarcar_celda(celda); // En ese caso, la desmarca
 		}
 		else marcar_celda(juego.tableroJuego.datos[fila][columna]); // En caso contrario, la marca
 	}
@@ -123,9 +125,11 @@ void marcar_desmarcar(tJuego& juego, const int& fila, const int& columna) {
 
 void ocultar(tJuego& juego, const int& fila, const int& columna)	 {
 
+	tCelda celda = dame_celda(juego.tableroJuego, fila, columna);
+
 	if (es_valida(juego.tableroJuego, fila, columna)) { // Comprueba si la posicion (fila x columna) es valida
 
-		if (es_visible(juego.tableroJuego.datos[fila][columna])) { //Comprueba si la celda en la posicion (fila x columna) esta oculta
+		if (es_visible(celda)) { //Comprueba si la celda en la posicion (fila x columna) esta oculta
 
 			ocultar_celda(juego.tableroJuego.datos[fila][columna]); //En ese caso, la oculta
 		}
