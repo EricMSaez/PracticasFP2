@@ -117,7 +117,7 @@ void marcar_desmarcar(tJuego& juego, const int& fila, const int& columna) {
 
 		if (esta_marcada(celda)) { // Comprueba si la celda de la posicion (fila x columna) esta marcada
 
-			desmarcar_celda(celda); // En ese caso, la desmarca
+			desmarcar_celda(juego.tableroJuego.datos[fila][columna]); // En ese caso, la desmarca
 		}
 		else marcar_celda(juego.tableroJuego.datos[fila][columna]); // En caso contrario, la marca
 	}
