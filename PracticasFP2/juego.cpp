@@ -185,7 +185,8 @@ tJuego crear_juego(const int& num_fils, const int& num_cols, const int& num_mina
 
 	int fila, columna;
 
-	for (int i = 0; i < num_minas; i++) {
+	int i = 0;
+	while (i < num_minas) {
 
 		//Obtenemos una posicion aleatoria con dame_pos_random
 		fila = dame_pos_random(num_fils);
