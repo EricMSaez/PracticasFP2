@@ -5,6 +5,7 @@
 #include "tablero.h" //Incluimos el header "tablero.h" para poder usar tTablero
 #include "listaPosiciones.h" //Incluimos el header "listaPosiciones.h" para poder usar tListaPosiciones
 #include <iostream>
+#include <random>
 using namespace std;
 
 
@@ -56,6 +57,12 @@ void marcar_desmarcar(tJuego& juego, const int& fila, const int& columna);
 void ocultar(tJuego& juego, const int& fila, const int& columna);
 
 void juega(tJuego& juego, const int& fila,const int& columna, tListaPosiciones& lista_pos);
+
+int calcula_nivel(const tJuego& juego);
+
+tJuego crear_juego(const int& num_fils, const int& num_cols, const int& num_minas);
+
+int dame_pos_random(const int& num_max);
 
 #endif
 

@@ -171,3 +171,43 @@ void juega(tJuego& juego, const int& fila, const int& columna, tListaPosiciones&
 		}
 	}
 }
+
+int calcula_nivel(const tJuego& juego) {
+	int nivelJuego;
+	int dimJuego = dame_num_filas(juego) * dame_num_columnas(juego); //Calcula las dimensiones del tablero
+	nivelJuego = dimJuego / dame_num_minas(juego);	//Lo divide entre el num de minas
+	return nivelJuego;	//Devuelve el nivel de dificultad del juego
+}
+
+tJuego crear_juego(const int& num_fils, const int& num_cols, const int& num_minas) {
+	tJuego juego;
+	inicializar_juego(juego, num_fils, num_cols);	//Creamos un juego con el num_fils y num_cols dado
+
+	int fila, columna;
+
+	for (int i = 0; i < num_minas; i++) {
+
+		//Obtenemos una posicion aleatoria con dame_pos_random
+		fila = dame_pos_random(num_fils);
+		columna = dame_pos_random(num_cols);
+
+		if (!contiene_mina(juego, fila, columna)) {	//Si esa celda no contiene mina, se pone en el tablero 
+			poner_mina(juego, fila, columna);
+			i++;
+		}
+	}
+
+	return juego;
+}
+
+int dame_pos_random(const int& num_max) {
+	int num_random;
+	
+	random_device rd;	//Semilla 
+	mt19937 gen(rd());	//Motor de numeros aleatorios
+
+	uniform_int_distribution<> dis(0, num_max - 1);	//Num random entre 0 y num_max-1
+	
+	num_random = dis(gen);
+	return num_random;
+}
