@@ -6,6 +6,7 @@
 #include "tablero.h" //Incluimos el header "tablero.h" para poder usar tTablero
 #include "juego.h"	 //Incluimos el header "juego.h" para poder usar tJuego
 #include "main.h"
+#include "listaJuegos.h"
 #include <iomanip>
 #include <fstream>
 #include <iostream>
@@ -35,4 +36,9 @@ void mostrar_separador(const tTablero& tablero);
 void mostrar_celda(const tTablero& tablero, const int& f, const int& c);
 
 void mostrar_juego_consola(const tTablero& tablero);
+
+bool cargar_juegos(tListaJuegos lista_juegos);
+
+void mostrar_lista_juegos(tListaJuegos lista_juegos);
+
 #endif

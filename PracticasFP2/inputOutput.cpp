@@ -151,3 +151,26 @@ void mostrar_juego_consola(const tTablero& tablero) {
     }
     cout << endl;
 }
+
+bool cargar_juegos(tListaJuegos lista_juegos) {
+    bool cargaJuegos = false;
+    string nombre;
+    int numeroJuegos;
+    cout << "Escribe el nombre del archivo: ";
+    cin >> nombre;
+    ifstream archivo;
+    archivo.open(nombre);
+    if (archivo.is_open()) {
+        cargaJuegos = true;
+        archivo >> numeroJuegos;
+        for (int i = 0;i < numeroJuegos;i++) {
+            archivo >> *lista_juegos.lista[lista_juegos.cont];
+            lista_juegos.cont++;
+        }
+        archivo.close();
+    }
+    return cargaJuegos;
+}
+
+void mostrar_lista_juegos(tListaJuegos lista_juegos) {
+}

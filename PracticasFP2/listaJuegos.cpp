@@ -4,6 +4,9 @@ void inicializar(tListaJuegos& lista_juegos) {
 	lista_juegos.lista = new tJuego*[MAX_JUEGOS];
 	lista_juegos.capacidad = MAX_JUEGOS;
 	lista_juegos.cont = 0;
+	for (int i = 0;i < MAX_JUEGOS;i++) {
+		lista_juegos.lista[i] = NULL;
+	}
 }
 
 void destruye(tListaJuegos& lista_juegos) {
