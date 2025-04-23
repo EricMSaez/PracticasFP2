@@ -172,5 +172,46 @@ bool cargar_juegos(tListaJuegos lista_juegos) {
     return cargaJuegos;
 }
 
-void mostrar_lista_juegos(tListaJuegos lista_juegos) {
+void mostrar_lista_juegos(const tListaJuegos& lista_juegos) {
+    bool inter;
+    int cont = lista_juegos.cont;
+    int i = 0;
+    while ((i < cont - 1) && inter) {
+        inter = false;
+        for (int j = cont - 1;j > i;j--) {
+            if (lista_juegos.lista[j] < lista_juegos.lista[j - 1]) {
+                tJuego tmp;
+                tmp = *lista_juegos.lista[j];
+                lista_juegos.lista[j] = lista_juegos.lista[j - 1];
+                *lista_juegos.lista[j - 1] = tmp;
+                inter = true;
+            }
+        }
+        if (inter) {
+            i++;
+        }
+    }
+    cout << "Mostrando lista de juegos por orden de dificultad...";
+    for (int a = 0;a < cont;a++) {
+        cout << "Juego " << a << endl;
+        cout << "   Dimension: " << dame_num_filas(*lista_juegos.lista[a]) << " x " << dame_num_columnas(*lista_juegos.lista[a]) << endl;
+        cout << "   Minas: " << dame_num_minas(*lista_juegos.lista[a]) << endl;
+    }
+}
+
+bool& operator> (tJuego juego1, tJuego juego2) {
+    bool esMenor;
+    int difJuego1;
+    int difJuego2;
+    
+    difJuego1 = cargar_juego(juego1);
+    difJuego2 = cargar_juego(juego2);
+
+    if (difJuego1 < difJuego2) {
+        esMenor = true;
+    }
+    else {
+        esMenor = false;
+    }
+    return esMenor;
 }
