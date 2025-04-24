@@ -19,18 +19,18 @@ void destruye(tListaJuegos& lista_juegos) {
 	delete [] lista_juegos.lista;
 }
 
-void insertar(tListaJuegos lista_juegos, const tJuego& juego) {
-	if (lista_juegos.capacidad > 0) {
-		lista_juegos.lista[lista_juegos.cont] = new tJuego;
-		lista_juegos.lista[lista_juegos.cont]->mina_explotada = juego.mina_explotada;
-		lista_juegos.lista[lista_juegos.cont]->num_descubiertas = juego.num_descubiertas;
-		lista_juegos.lista[lista_juegos.cont]->num_jugadas = juego.num_jugadas;
-		lista_juegos.lista[lista_juegos.cont]->num_minas = juego.num_minas;
-		lista_juegos.lista[lista_juegos.cont]->tableroJuego = juego.tableroJuego;
-
-		lista_juegos.capacidad--;
-		lista_juegos.cont++;
+void insertar(tListaJuegos& lista_juegos, const tJuego& juego) {
+	if (lista_juegos.capacidad = 0) {
+		redimensionar(lista_juegos);
 	}
+	lista_juegos.lista[lista_juegos.cont] = new tJuego;
+	lista_juegos.lista[lista_juegos.cont]->mina_explotada = juego.mina_explotada;
+	lista_juegos.lista[lista_juegos.cont]->num_descubiertas = juego.num_descubiertas;
+	lista_juegos.lista[lista_juegos.cont]->num_jugadas = juego.num_jugadas;
+	lista_juegos.lista[lista_juegos.cont]->num_minas = juego.num_minas;
+	lista_juegos.lista[lista_juegos.cont]->tableroJuego = juego.tableroJuego;
+	lista_juegos.capacidad--;
+	lista_juegos.cont++;
 }
 
 int numero_juegos(const tListaJuegos& lista_juegos) {
@@ -54,7 +54,7 @@ tJuego dame_juego(const tListaJuegos& lista_juegos, const int& pos) {
 	return juego;
 }
 
-void eliminar(tListaJuegos lista_juegos, const int& pos) {
+void eliminar(tListaJuegos& lista_juegos, const int& pos) {
 	int contador=pos;
 	while (contador < lista_juegos.cont) {
 		lista_juegos.lista[contador] = lista_juegos.lista[contador + 1];
@@ -62,3 +62,23 @@ void eliminar(tListaJuegos lista_juegos, const int& pos) {
 	}
 	delete lista_juegos.lista[lista_juegos.cont];
 }
+
+void redimensionar(tListaJuegos& lista_juegos) {
+	int capacidadAntigua;	//Crea variable para almacenar la antigua capacidad total de la lista
+	tJuego** aux;	//Creacion de puntero a array auxiliar de punteros a tJuego 
+
+	capacidadAntigua = lista_juegos.cont;
+
+	aux = new tJuego*[2 * capacidadAntigua]; //Crea array dinamico de punteros auxiliar
+
+	for (int i = 0;i < capacidadAntigua;i++) { //Guarda en array dinamico de punteros auxiliar los punteros a los juegos guardados
+		aux[i] = lista_juegos.lista[i];
+	}
+
+	delete[] lista_juegos.lista; //Destruye el array dinamico de punteros antiguo
+
+	lista_juegos.lista = aux; //Se apunta el puntero de la lista al nuevo array dinamico de punteros
+	lista_juegos.cont = capacidadAntigua * 2;
+	lista_juegos.capacidad = capacidadAntigua;
+}
+
