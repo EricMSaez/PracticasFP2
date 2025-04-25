@@ -172,6 +172,28 @@ bool cargar_juegos(tListaJuegos lista_juegos) {
     return cargaJuegos;
 }
 
+bool guarda_juegos(tListaJuegos lista_juegos) {
+    bool cargaArchivo = false;
+    string nombre;
+    cout << "Escribe el nombre del archivo: ";
+    cin >> nombre;
+    ifstream archivo;
+    archivo.open(nombre);
+    int numeroJuegos;
+
+    if (archivo.is_open()) {
+        cargaArchivo = true;
+        archivo >> numeroJuegos;
+        for (int i = 0; i < numeroJuegos; i++) {
+            tJuego juego;
+            archivo >> juego;
+            insertar(lista_juegos, juego);
+        }
+        archivo.close();
+    }
+    return cargaArchivo;
+}
+
 void mostrar_lista_juegos(const tListaJuegos& lista_juegos) {
     bool inter = true;
     int cont = lista_juegos.cont;

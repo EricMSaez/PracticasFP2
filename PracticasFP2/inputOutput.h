@@ -39,6 +39,8 @@ void mostrar_juego_consola(const tTablero& tablero);
 
 bool cargar_juegos(tListaJuegos lista_juegos);
 
+bool guarda_juegos(tListaJuegos lista_juegos);
+
 void mostrar_lista_juegos(const tListaJuegos& lista_juegos);
 
 #endif
