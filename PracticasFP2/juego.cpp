@@ -204,11 +204,8 @@ tJuego crear_juego(const int& num_fils, const int& num_cols, const int& num_mina
 int dame_pos_random(const int& num_max) {
 	int num_random;
 	
-	random_device rd;	//Semilla 
-	mt19937 gen(rd());	//Motor de numeros aleatorios
-
-	uniform_int_distribution<> dis(0, num_max - 1);	//Num random entre 0 y num_max-1
+	srand(time(NULL));
 	
-	num_random = dis(gen);
+	num_random = rand() % (num_max-1); //Devuelve un numero entre el 0 y el num_max-1
 	return num_random;
 }

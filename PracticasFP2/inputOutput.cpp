@@ -173,7 +173,7 @@ bool cargar_juegos(tListaJuegos lista_juegos) {
 }
 
 void mostrar_lista_juegos(const tListaJuegos& lista_juegos) {
-    bool inter;
+    bool inter = true;
     int cont = lista_juegos.cont;
     int i = 0;
     while ((i < cont - 1) && inter) {
