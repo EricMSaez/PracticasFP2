@@ -19,8 +19,9 @@ typedef struct {
 } tPosicion;
 
 typedef struct {
-	tPosicion lista[MAX_LISTA];
+	tPosicion* lista;
 	int cont;
+	int capacidad;
 } tListaPosiciones;
 
 
@@ -35,5 +36,7 @@ int dame_posX(const tListaPosiciones& lista_pos, const int& i);
 int dame_posY(const tListaPosiciones& lista_pos, const int& i);
 
 void insertar_final(tListaPosiciones& lista_pos, const int& x, const int& y);
+
+void destruye(tListaPosiciones& lista_pos);
 
 #endif

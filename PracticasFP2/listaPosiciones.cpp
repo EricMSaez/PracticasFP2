@@ -1,6 +1,9 @@
 #include "listaPosiciones.h"
 
-void inicializar(tListaPosiciones& lista_pos) { //Inicializa el contador de la lista de posiciones a 0
+void inicializar(tListaPosiciones& lista_pos) { //Inicializa la lista de posiciones
+
+	lista_pos.lista = new tPosicion[MAX_LISTA];
+	lista_pos.capacidad = MAX_LISTA;
 	lista_pos.cont = 0;
 }
 
@@ -32,6 +35,7 @@ int dame_posY(const tListaPosiciones& lista_pos, const int& i) { //Devuelve la c
 	return posY;
 }
 
-
-
-
+void destruye(tListaPosiciones& lista_pos) {
+	
+	delete[] lista_pos.lista;
+}
