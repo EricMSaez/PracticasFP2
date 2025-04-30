@@ -78,13 +78,15 @@ void marcarDesmarcar(tJuego& juego) {	//Pide posicion de una celda y la marca/de
 
 void undoJugada(tJuego& juego, tListaUndo& listaUndo) { //Deshace los movimientos almacenados en la ultima lista de posiciones
 	tListaPosiciones listaPos;
-	listaPos = ultimos_movimientos(listaUndo); //Llama a ultimos_movimientos de listaUndo.h
-	listaUndo.cont--;
-	
-	for (int i = 0; i < listaPos.cont; i++) {  //Recorre todas las jugadas de la lista de posiciones
-		int x = dame_posX(listaPos, i); //Llama a dame_posx de listaPosiciones.h para guardar la coordenada x en su variable
-		int y = dame_posY(listaPos, i); //Llama a dame_posy de listaPosiciones.h para guardar la coordenada y en su variable
-		ocultar(juego, x, y);
+	if (listaUndo.cont != 0) {
+		listaPos = ultimos_movimientos(listaUndo); //Llama a ultimos_movimientos de listaUndo.h
+		listaUndo.cont--;
+
+		for (int i = 0; i < listaPos.cont; i++) {  //Recorre todas las jugadas de la lista de posiciones
+			int x = dame_posX(listaPos, i); //Llama a dame_posx de listaPosiciones.h para guardar la coordenada x en su variable
+			int y = dame_posY(listaPos, i); //Llama a dame_posy de listaPosiciones.h para guardar la coordenada y en su variable
+			ocultar(juego, x, y);
+		}
 	}
 }
 
