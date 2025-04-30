@@ -9,13 +9,13 @@ using namespace std;
 
 //Constantes
 
-const int MAX_UNDO = 10; //Numero de veces seguidas que la funcion "undo" se puede utilizar
+const int MAX_UNDO = 2; //Numero de veces seguidas que la funcion "undo" se puede utilizar
 
 
 //Declaracion de tipos
 
 typedef struct {
-	tListaPosiciones lista[MAX_UNDO];
+	tListaPosiciones* lista[MAX_UNDO];
 	int cont;
 } tListaUndo;
 
