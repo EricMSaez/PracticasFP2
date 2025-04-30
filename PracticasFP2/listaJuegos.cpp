@@ -24,11 +24,7 @@ void insertar(tListaJuegos& lista_juegos, const tJuego& juego) {
 		redimensionar(lista_juegos);
 	}
 	lista_juegos.lista[lista_juegos.cont] = new tJuego;
-	lista_juegos.lista[lista_juegos.cont]->mina_explotada = juego.mina_explotada;
-	lista_juegos.lista[lista_juegos.cont]->num_descubiertas = juego.num_descubiertas;
-	lista_juegos.lista[lista_juegos.cont]->num_jugadas = juego.num_jugadas;
-	lista_juegos.lista[lista_juegos.cont]->num_minas = juego.num_minas;
-	lista_juegos.lista[lista_juegos.cont]->tableroJuego = juego.tableroJuego;
+	*lista_juegos.lista[lista_juegos.cont] = juego;
 	lista_juegos.capacidad--;
 	lista_juegos.cont++;
 }
