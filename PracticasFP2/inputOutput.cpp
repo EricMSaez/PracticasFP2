@@ -176,6 +176,60 @@ bool cargar_juegos(tListaJuegos& lista_juegos) {
     return cargaArchivo;
 }
 
+ofstream& operator<< (ofstream& in, const tJuego& juego) { //Guarda los datos del juego en el fichero
+
+    int nfils = dame_num_filas(juego);
+    int ncols = dame_num_columnas(juego);
+    int nMinas = dame_num_minas(juego);
+    int contMinas = 0;
+
+    in << nfils << " " << ncols << endl;
+    in << nMinas << endl;
+
+    //Busca en el tablero las celdas que son mina
+    while (contMinas != nMinas) {
+
+       for (int i = 0; i < nfils; i++) {   
+           for (int j = 0; j < ncols; j++) {
+
+               if (es_mina(dame_celda(juego.tableroJuego, i, j))) { //Si es mina, guarda la posición en el fichero
+                   in << i << " " << j << endl;
+                   contMinas++;
+               }
+           }
+       }
+    }
+    
+    return in;
+}
+
+bool guarda_juegos(tListaJuegos& lista_juegos) {
+    
+    cargar_juegos(lista_juegos); //Cargamos lista_juegos antes de almacenar los datos en el fichero
+    
+    bool guardaArchivo = false;
+    string nombre;
+    cout << "Escribe el nombre del archivo: ";
+    cin >> nombre;
+    ofstream archivo;
+    archivo.open(nombre);
+
+    int numeroJuegos = lista_juegos.cont;
+
+    if (archivo.is_open()) {
+        guardaArchivo = true;
+        archivo << numeroJuegos << endl;
+
+        for (int i = 0; i < numeroJuegos; i++) {
+           archivo << lista_juegos.lista[i];  //Sobrecargamos el operador "<<"
+        }
+        
+    }
+    archivo.close();
+
+    return guardaArchivo;
+}
+
 void mostrar_lista_juegos(tListaJuegos& lista_juegos) {
     bool inter = true;
     int cont = lista_juegos.cont;
