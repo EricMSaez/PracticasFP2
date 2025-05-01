@@ -7,21 +7,69 @@
 int main() {
 	cout << "Ole Ole" << endl;
 	tJuego juego;
+	tListaJuegos listaJuegos;
 	tListaPosiciones listaPos;
 	tListaUndo listaUndo;
-	inicio_juego(juego, listaPos, listaUndo);
+	inicio_juegos(listaJuegos, listaPos, listaUndo);
 }
 
-
-void inicio_juego(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) { //Inicializa el juego y carga el archivo de datos del tablero
+void inicio_juegos(tListaJuegos& listaJuegos, tListaPosiciones& listaPos, tListaUndo& listaUndo) { //Inicializa el juego y carga el archivo de datos del tablero
 	inicializar(listaPos); //Llamada a inicializar de listaPosiciones.h
 	inicializar(listaUndo); //Llamada a inicializar de listaUndo.h
+	inicializar(listaJuegos);//llamada a inicializar listaJuegos
+	string opcion, partida, filas, columnas, minas;
+	int opcionNum, partidaNum, filasNum, columnasNum, minasNum;
 
-	if (!cargar_juego(juego)) { //Comprueba si se ha podido leer el fichero
+	tJuego JuegoSeleccionado;
+
+
+	if (!cargar_juegos(listaJuegos)) { //Comprueba si se ha podido leer el fichero
 
 		cout << "Error de lectura de archivo."; //En caso de que no se haya podido, imprime en pantalla un error de lectura
 	}
-	else juega(juego, listaPos, listaUndo); //En caso de haber leido el fichero y cargado sus valores, llama a juega de main.h
+	else {
+		if (listaJuegos.cont == 0) {
+			cout << "No hay juegos en el fichero. Creando juego aleatorio..." << endl;
+			insertar(listaJuegos, juego_aleatorio());
+			partidaNum = listaJuegos.cont - 1;
+			}
+
+		else {
+			cout << "Juego nuevo (Opcion 1) o juego existente (Opcion 2): ";
+			cin >> opcion;
+			opcionNum = esNumero(opcion); //llamada a esNumero para convertir string en int y comprobar si es un numero
+
+			while (opcionNum != 1 && opcionNum != 2) {	//Bucle para pedir nuevo valor en caso de no introducir un valor valido (1 o 2)
+				cout << "Opcion no valida, intentalo de nuevo." << endl;
+				cout << "Juego nuevo (Opcion 1) o juego existente (Opcion 2): ";
+				cin >> opcion;
+				opcionNum = esNumero(opcion);
+			}
+
+			//Opcion 1: Crear juego nuevo
+			if (opcionNum == 1) {
+
+				insertar(listaJuegos, juego_aleatorio());
+				partidaNum = listaJuegos.cont - 1;
+			}
+			//Opcion 2: Seleccionar juego existente
+			if (opcionNum == 2) {
+				mostrar_lista_juegos(listaJuegos);
+				cout << "Selecciona la partida: ";
+				cin >> partida;
+				partidaNum = esNumero(partida);
+				while (partidaNum<0 || partidaNum>listaJuegos.cont - 1) {
+					cout << "Valor no valido. Intentalo de nuevo" << endl;
+					cout << "Selecciona la partida: ";
+					cin >> partida;
+					partidaNum = esNumero(partida);
+				}
+			}
+		}
+		JuegoSeleccionado = dame_juego(listaJuegos, partidaNum);
+		cout << "Numero de minas reales: " << JuegoSeleccionado.num_minas << endl;
+		juega(JuegoSeleccionado, listaPos, listaUndo);
+	}
 }
 
 void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) { //Pide la columna a jugar, y detecta que accion se quiere llevar a cabo
@@ -59,9 +107,6 @@ void juega(tJuego& juego, tListaPosiciones& listaPos, tListaUndo& listaUndo) { /
 	}
 	terminar_juego(juego); //Cuando se detecte una de las condiciones de finalizacion del juego, llama a terminar_juego de main.h
 }
-
-
-
 
 void terminar_juego(tJuego juego) { //Muestra el tablero final y el resultado de la partida
 	mostrar_juego_consola(juego.tableroJuego); //Llamada a mostrar_juego_consola de inputOutput.h
@@ -114,4 +159,26 @@ int esNumero(string entrada) { //Comprueba si el string introducido tiene valore
 		resultado = stoi(entrada); //Si el string introducido es valido, asigna a la variable resultado su valor en un int
 	}
 	return resultado; //Devuelve resultado como variable de saldia
+}
+
+tJuego juego_aleatorio() {
+	string filas, columnas, minas;
+	int filasNum, columnasNum, minasNum;
+	cout << endl << "Numerro de filas (>=2) y columnas (>=2) del tablero: ";
+	cin >> filas >> columnas;
+	cout << endl << "Numero de minas (<8): ";
+	cin >> minas;
+
+	filasNum = esNumero(filas);
+	columnasNum = esNumero(columnas);
+	minasNum = esNumero(minas);
+
+	while (filasNum < 2 || columnasNum < 2 || minasNum < 0 || minasNum>8) { //Bucle para pedir nuevo valor en caso de no introducir un valor valido
+		cout << endl << "Valores introducidos no validos. Intentalo de nuevo." << endl;
+		cout << endl << "Numerro de filas (>=2) y columnas (>=2) del tablero: ";
+		cin >> filas >> columnas;
+		cout << endl << "Numero de minas (<8): ";
+		cin >> minas;
+	}
+	return crear_juego(filasNum, columnasNum, minasNum);
 }

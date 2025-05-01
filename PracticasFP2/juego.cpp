@@ -85,6 +85,7 @@ void poner_mina(tJuego& juego, const int& fila, const int& columna) {
 		if (!es_mina(celda)) { // Comprueba si en la posicion (fila x columna) hay mina 
 
 			poner_mina(celda); //Pone mina en la celda de la posicion (fila x columna)
+			juego.num_minas++;
 
 			for (int i = fila-1;i <= fila + 1;i++) {		// Bucle que recorre las ocho celdas adyacentes a la seleccionada 
 				for (int j = columna - 1; j <= columna + 1;j++) {
@@ -182,11 +183,9 @@ int calcula_nivel(const tJuego& juego) {
 tJuego crear_juego(const int& num_fils, const int& num_cols, const int& num_minas) {
 	tJuego juego;
 	inicializar_juego(juego, num_fils, num_cols);	//Creamos un juego con el num_fils y num_cols dado
-
 	int fila, columna;
-
 	int i = 0;
-	while (i < num_minas) {
+	while (i < num_minas && i<num_fils*num_cols) {
 
 		//Obtenemos una posicion aleatoria con dame_pos_random
 		fila = dame_pos_random(num_fils);
@@ -195,7 +194,7 @@ tJuego crear_juego(const int& num_fils, const int& num_cols, const int& num_mina
 		if (!contiene_mina(juego, fila, columna)) {	//Si esa celda no contiene mina, se pone en el tablero 
 			poner_mina(juego, fila, columna);
 			i++;
-		}
+		} 
 	}
 
 	return juego;

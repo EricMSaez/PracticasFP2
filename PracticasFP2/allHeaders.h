@@ -6,3 +6,4 @@
 #include "listaUndo.h"
 #include "main.h"
 #include "tablero.h"
+#include "listaJuegos.h"

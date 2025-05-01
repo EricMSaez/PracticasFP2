@@ -45,6 +45,7 @@ istream& operator>> (istream& in, tJuego& juego) { //Carga los datos del fichero
 bool cargar_juego(tJuego& juego) { //Cargar el juego con un archivo dado por el usuario
     bool archivoAbierto = false;
     string nombre;
+    mostrar_cabecera();
     cout << "Escribe el nombre del archivo: ";
     cin >> nombre;
     ifstream archivo;
@@ -152,30 +153,10 @@ void mostrar_juego_consola(const tTablero& tablero) {
     cout << endl;
 }
 
-bool cargar_juegos(tListaJuegos lista_juegos) {
-    bool cargaJuegos = false;
-    string nombre;
-    int numeroJuegos;
-    cout << "Escribe el nombre del archivo: ";
-    cin >> nombre;
-    ifstream archivo;
-    archivo.open(nombre);
-    if (archivo.is_open()) {
-        cargaJuegos = true;
-        archivo >> numeroJuegos;
-        for (int i = 0;i < numeroJuegos;i++) {
-            archivo >> *lista_juegos.lista[lista_juegos.cont];
-            lista_juegos.cont++;
-        }
-        archivo.close();
-    }
-    return cargaJuegos;
-}
-
-bool guarda_juegos(tListaJuegos lista_juegos) {
+bool cargar_juegos(tListaJuegos& lista_juegos) {
     bool cargaArchivo = false;
     string nombre;
-    cout << "Escribe el nombre del archivo: ";
+    cout << "Nombre del fichero de juegos: ";
     cin >> nombre;
     ifstream archivo;
     archivo.open(nombre);
@@ -189,12 +170,13 @@ bool guarda_juegos(tListaJuegos lista_juegos) {
             archivo >> juego;
             insertar(lista_juegos, juego);
         }
+        
         archivo.close();
     }
     return cargaArchivo;
 }
 
-void mostrar_lista_juegos(const tListaJuegos& lista_juegos) {
+void mostrar_lista_juegos(tListaJuegos& lista_juegos) {
     bool inter = true;
     int cont = lista_juegos.cont;
     int i = 0;
@@ -213,9 +195,9 @@ void mostrar_lista_juegos(const tListaJuegos& lista_juegos) {
             i++;
         }
     }
-    cout << "Mostrando lista de juegos por orden de dificultad...";
+    cout << "Mostrando lista de juegos por orden de dificultad..." << endl;
     for (int a = 0;a < cont;a++) {
-        cout << "Juego " << a << endl;
+        cout << "Juego " << a << ":" << endl;
         cout << "   Dimension: " << dame_num_filas(*lista_juegos.lista[a]) << " x " << dame_num_columnas(*lista_juegos.lista[a]) << endl;
         cout << "   Minas: " << dame_num_minas(*lista_juegos.lista[a]) << endl;
     }
