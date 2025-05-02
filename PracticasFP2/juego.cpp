@@ -185,6 +185,9 @@ tJuego crear_juego(const int& num_fils, const int& num_cols, const int& num_mina
 	inicializar_juego(juego, num_fils, num_cols);	//Creamos un juego con el num_fils y num_cols dado
 	int fila, columna;
 	int i = 0;
+
+	srand(time(NULL)); //Inicializa la semilla una vez para las posiciones aleatorias 
+
 	while (i < num_minas && i<num_fils*num_cols) {
 
 		//Obtenemos una posicion aleatoria con dame_pos_random
@@ -192,6 +195,8 @@ tJuego crear_juego(const int& num_fils, const int& num_cols, const int& num_mina
 		columna = dame_pos_random(num_cols);
 
 		if (!contiene_mina(juego, fila, columna)) {	//Si esa celda no contiene mina, se pone en el tablero 
+			cout << fila << " " << columna << endl;
+			
 			poner_mina(juego, fila, columna);
 			i++;
 		} 
@@ -202,9 +207,6 @@ tJuego crear_juego(const int& num_fils, const int& num_cols, const int& num_mina
 
 int dame_pos_random(const int& num_max) {
 	int num_random;
-	
-	srand(time(NULL));
-	
 	num_random = rand() % (num_max-1); //Devuelve un numero entre el 0 y el num_max-1
 	return num_random;
 }
