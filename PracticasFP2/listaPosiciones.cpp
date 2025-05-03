@@ -9,12 +9,13 @@ void inicializar(tListaPosiciones& lista_pos) { //Inicializa la lista de posicio
 
 void insertar_final(tListaPosiciones& lista_pos, const int& x, const int& y) { //Inserta la ultima jugada en la lista de posiciones
 
-	if (lista_pos.cont < MAX_LISTA) { //Comprueba que la lista de posiciones no este llena
-
-		lista_pos.lista[lista_pos.cont].posx = x; //Guarda coord. x
-		lista_pos.lista[lista_pos.cont].posy = y; //Guarda coord. y
-		lista_pos.cont++; //Aumenta contador de la lista de posiciones
+	if (lista_pos.capacidad = 0) { //Comprueba que la lista de posiciones no este llena
+		redimensionamiento(lista_pos);
 	}
+
+	lista_pos.lista[lista_pos.cont].posx = x; //Guarda coord. x
+	lista_pos.lista[lista_pos.cont].posy = y; //Guarda coord. y
+	lista_pos.cont++; //Aumenta contador de la lista de posiciones
 }
 
 int longitud(const tListaPosiciones& lista_pos) { //Devuelve el numero de elementos de una lista de posiciones
@@ -38,4 +39,23 @@ int dame_posY(const tListaPosiciones& lista_pos, const int& i) { //Devuelve la c
 void destruye(tListaPosiciones& lista_pos) {
 	
 	delete[] lista_pos.lista;
+}
+
+tListaPosiciones redimensionamiento(tListaPosiciones& lista_pos) {
+	
+	tPosicion* nueva;
+	int capacidadAntigua = lista_pos.cont;
+	nueva = new tPosicion [2 * capacidadAntigua];
+
+	for (int i = 0; i < capacidadAntigua; i++) {
+		nueva[i] = lista_pos.lista[i];
+		
+	}
+
+	lista_pos.capacidad = capacidadAntigua;
+	lista_pos.cont = 2 * capacidadAntigua;
+	lista_pos.lista = nueva;
+
+	delete [] nueva;
+
 }
