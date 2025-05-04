@@ -1,4 +1,5 @@
 #include "juego.h"
+#include "tablero.h"
 
 
 void inicializar(tJuego& juego) { //Inicializa el juego a 0
@@ -100,13 +101,15 @@ void poner_mina(tJuego& juego, const int& fila, const int& columna) {
 								celdaAdyacente.numero++; 
 							}
 							else if (!es_mina(celdaAdyacente)) { // Comprueba si celda adyacente no hay mina
-								poner_numero(juego.tableroJuego.datos[i][j], 1); // En ese caso, cambia el estado de la celda a NUMERO y asigna el valor 1
+								poner_numero(celdaAdyacente, 1); // En ese caso, cambia el estado de la celda a NUMERO y asigna el valor 1
 							}
+							poner_celda(juego.tableroJuego, i, j, celdaAdyacente);
 						}
 					}
 				}
 			}
 		}
+		poner_celda(juego.tableroJuego, fila, columna, celda);
 	}
 }
 

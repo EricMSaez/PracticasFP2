@@ -41,6 +41,6 @@ bool es_valida(const tTablero& tablero, const int& fila, const int& columna) { /
 }
 
 void poner_celda(tTablero& tablero, const int& fila, const int& columna, tCelda& celda) { //Asigna el valor de la celda a la posicion
-	dame_celda(tablero, fila, columna) = celda;
+	tablero.datos[fila][columna] = celda;
 }
 
