@@ -67,7 +67,6 @@ void inicio_juegos(tListaJuegos& listaJuegos, tListaPosiciones& listaPos, tLista
 			}
 		}
 		JuegoSeleccionado = dame_juego(listaJuegos, partidaNum);
-		cout << "Numero de minas reales: " << JuegoSeleccionado.num_minas << endl;
 		juega(JuegoSeleccionado, listaPos, listaUndo);
 	}
 }

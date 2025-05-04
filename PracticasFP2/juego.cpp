@@ -194,9 +194,7 @@ tJuego crear_juego(const int& num_fils, const int& num_cols, const int& num_mina
 		fila = dame_pos_random(num_fils);
 		columna = dame_pos_random(num_cols);
 
-		if (!contiene_mina(juego, fila, columna)) {	//Si esa celda no contiene mina, se pone en el tablero 
-			cout << fila << " " << columna << endl;
-			
+		if (!contiene_mina(juego, fila, columna)) {	//Si esa celda no contiene mina, se pone en el tablero 			
 			poner_mina(juego, fila, columna);
 			i++;
 		} 
