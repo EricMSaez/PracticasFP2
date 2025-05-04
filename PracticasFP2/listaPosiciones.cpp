@@ -41,7 +41,7 @@ void destruye(tListaPosiciones& lista_pos) {
 	delete[] lista_pos.lista;
 }
 
-tListaPosiciones redimensionamiento(tListaPosiciones& lista_pos) {
+void redimensionamiento(tListaPosiciones& lista_pos) {
 	
 	tPosicion* nueva;
 	int capacidadAntigua = lista_pos.cont;
@@ -50,12 +50,13 @@ tListaPosiciones redimensionamiento(tListaPosiciones& lista_pos) {
 	for (int i = 0; i < capacidadAntigua; i++) {
 		nueva[i] = lista_pos.lista[i];
 		
-	}
+	}	  
+
+	delete [] lista_pos.lista;
 
 	lista_pos.capacidad = capacidadAntigua;
 	lista_pos.cont = 2 * capacidadAntigua;
 	lista_pos.lista = nueva;
 
-	delete [] nueva;
 
 }

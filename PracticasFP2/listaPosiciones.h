@@ -39,6 +39,6 @@ void insertar_final(tListaPosiciones& lista_pos, const int& x, const int& y);
 
 void destruye(tListaPosiciones& lista_pos);
 
-tListaPosiciones redimensionamiento(tListaPosiciones& lista_pos);
+void redimensionamiento(tListaPosiciones& lista_pos);
 
 #endif
