@@ -63,7 +63,7 @@ bool esta_completo(const tJuego& juego) {
 	bool estaCompleto = false;
 	int numCeldasJugadas = juego.num_descubiertas + dame_num_minas(juego);
 	int numCeldasTablero = dame_num_columnas(juego) * dame_num_filas(juego);
-	if (numCeldasJugadas == numCeldasTablero) estaCompleto = true;
+	if (numCeldasJugadas >= numCeldasTablero) estaCompleto = true;
 	return estaCompleto;
 }
 
