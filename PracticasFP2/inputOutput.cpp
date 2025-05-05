@@ -219,7 +219,7 @@ bool guarda_juegos(tListaJuegos& lista_juegos) {
         archivo << numeroJuegos << endl;
 
         for (int i = 0; i < numeroJuegos; i++) {
-           archivo << lista_juegos.lista[i];  //Sobrecargamos el operador "<<"
+           archivo << *lista_juegos.lista[i];  //Sobrecargamos el operador "<<"
         }
         
     }
