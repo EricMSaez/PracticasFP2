@@ -57,6 +57,7 @@ void eliminar(tListaJuegos& lista_juegos, const int& pos) {
 		contador++;
 	}
 	delete lista_juegos.lista[lista_juegos.cont];
+	lista_juegos.cont--;
 }
 
 void redimensionar(tListaJuegos& lista_juegos) {
