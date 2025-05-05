@@ -52,11 +52,11 @@ tJuego dame_juego(const tListaJuegos& lista_juegos, const int& pos) {
 
 void eliminar(tListaJuegos& lista_juegos, const int& pos) {
 	int contador=pos;
+	delete lista_juegos.lista[pos];
 	while (contador < lista_juegos.cont) {
 		lista_juegos.lista[contador] = lista_juegos.lista[contador + 1];
 		contador++;
 	}
-	delete lista_juegos.lista[lista_juegos.cont];
 	lista_juegos.cont--;
 	lista_juegos.capacidad++;
 }
