@@ -68,6 +68,8 @@ void inicio_juegos(tListaJuegos& listaJuegos, tListaPosiciones& listaPos, tLista
 		}
 		JuegoSeleccionado = dame_juego(listaJuegos, partidaNum);
 		juega(JuegoSeleccionado, listaPos, listaUndo);
+		
+		if(!guarda_juegos(listaJuegos)) cout << "Error de escritura en el archivo. "; //Cuando termina el juego, guarda los juegos de listaJuego en un archivo 
 	}
 }
 

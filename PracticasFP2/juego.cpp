@@ -111,6 +111,7 @@ void poner_mina(tJuego& juego, const int& fila, const int& columna) {
 		}
 		poner_celda(juego.tableroJuego, fila, columna, celda);
 	}
+	poner_celda(juego.tableroJuego,fila,columna,celda);
 }
 
 void marcar_desmarcar(tJuego& juego, const int& fila, const int& columna) {
