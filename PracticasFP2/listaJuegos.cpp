@@ -58,6 +58,7 @@ void eliminar(tListaJuegos& lista_juegos, const int& pos) {
 	}
 	delete lista_juegos.lista[lista_juegos.cont];
 	lista_juegos.cont--;
+	lista_juegos.capacidad++;
 }
 
 void redimensionar(tListaJuegos& lista_juegos) {
