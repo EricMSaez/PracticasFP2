@@ -205,8 +205,6 @@ ofstream& operator<< (ofstream& in, const tJuego& juego) { //Guarda los datos de
 
 bool guarda_juegos(tListaJuegos& lista_juegos) {
     
-    cargar_juegos(lista_juegos); //Cargamos lista_juegos antes de almacenar los datos en el fichero
-    
     bool guardaArchivo = false;
     string nombre;
     cout << "Escribe el nombre del archivo: ";
