@@ -34,10 +34,13 @@ tListaPosiciones ultimos_movimientos(tListaUndo lista_undo) { //Devuelve el ulti
 
 void destruye(tListaUndo& lista_undo) { //Elimina la lista undo 
 	for (int i = 0; i < lista_undo.cont; i++) {
-		delete lista_undo.lista[i];
+		destruye(*lista_undo.lista[i]); //Llama a destruye de lista_pos
 	}
+
+	lista_undo.cont = 0;
 }
 
 void eliminar_ultimo(tListaUndo& lista_undo) { //Elimina la ultima lista de posiciones de la lista undo
-	delete lista_undo.lista[lista_undo.cont];
+	destruye(*lista_undo.lista[lista_undo.cont]);
+	lista_undo.cont--;
 }

@@ -38,7 +38,10 @@ int dame_posY(const tListaPosiciones& lista_pos, const int& i) { //Devuelve la c
 
 void destruye(tListaPosiciones& lista_pos) {
 	
-	delete[] lista_pos.lista;
+	if (lista_pos.lista != NULL) {
+		delete[] lista_pos.lista;
+		lista_pos.lista = NULL;
+	}
 }
 
 void redimensionamiento(tListaPosiciones& lista_pos) {

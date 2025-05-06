@@ -75,11 +75,16 @@ void inicio_juegos(tListaJuegos& listaJuegos, tListaPosiciones& listaPos, tLista
 		}
 		JuegoSeleccionado = dame_juego(listaJuegos, partidaNum);
 		juega(JuegoSeleccionado, listaPos, listaUndo);
+		
+		if(!guarda_juegos(listaJuegos)) cout << "Error de escritura en el archivo. "; //Cuando termina el juego, guarda los juegos de listaJuego en un archivo
 
 		if (mina_explotada(JuegoSeleccionado) || esta_completo(JuegoSeleccionado)) { //Si el juego seleccionado ha sido terminado, lo borra de la lista de juegos
 			eliminar(listaJuegos, partidaNum);
 		}
-		if(!guarda_juegos(listaJuegos)) cout << "Error de escritura en el archivo. "; //Cuando termina el juego, guarda los juegos de listaJuego en un archivo 
+
+		destruye(listaUndo);
+		//destruye(listaJuegos);
+		
 	}
 }
 

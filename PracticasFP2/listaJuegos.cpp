@@ -9,14 +9,36 @@ void inicializar(tListaJuegos& lista_juegos) {
 	}
 }
 
-void destruye(tListaJuegos& lista_juegos) {
-		while (lista_juegos.cont > 0) {
-		delete lista_juegos.lista[lista_juegos.cont-1];
-		lista_juegos.cont--;
-		lista_juegos.capacidad++;
+/*void destruye(tListaJuegos& lista_juegos) {
+	for (int i = 0; i < lista_juegos.cont; i++) {
+
+		if (lista_juegos.lista[i] != NULL) {
+			delete lista_juegos.lista[i];
+			lista_juegos.lista[i] = NULL;
+		}
 	}
 
 	delete [] lista_juegos.lista;
+	lista_juegos.lista = NULL;
+	lista_juegos.cont = 0;
+	lista_juegos.capacidad = 0;
+} */
+
+void destruye(tListaJuegos& lista_juegos) {
+
+	while (lista_juegos.cont > 0) {
+		if (lista_juegos.lista[lista_juegos.cont - 1] != NULL) {
+
+			delete lista_juegos.lista[lista_juegos.cont - 1];
+			lista_juegos.lista[lista_juegos.cont - 1] = NULL;
+			lista_juegos.cont--;
+			lista_juegos.capacidad++;
+		}
+
+	}
+
+	delete[] lista_juegos.lista;
+	lista_juegos.lista = NULL;
 }
 
 void insertar(tListaJuegos& lista_juegos, const tJuego& juego) {
