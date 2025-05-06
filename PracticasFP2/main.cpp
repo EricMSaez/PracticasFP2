@@ -1,5 +1,8 @@
 // Eric Madubuogu Saez, Violeta Garcia Fernandez
 
+#define _CRTDBG_MAP_ALLOC
+#include <crtdbg.h>
+#include <cstdlib>
 
 #include "allHeaders.h"
 #include "main.h"
@@ -11,6 +14,10 @@ int main() {
 	tListaPosiciones listaPos;
 	tListaUndo listaUndo;
 	inicio_juegos(listaJuegos, listaPos, listaUndo);
+
+	_CrtDumpMemoryLeaks();
+	return 0;
+
 }
 
 void inicio_juegos(tListaJuegos& listaJuegos, tListaPosiciones& listaPos, tListaUndo& listaUndo) { //Inicializa el juego y carga el archivo de datos del tablero
