@@ -41,6 +41,8 @@ void destruye(tListaUndo& lista_undo) { //Elimina la lista undo
 }
 
 void eliminar_ultimo(tListaUndo& lista_undo) { //Elimina la ultima lista de posiciones de la lista undo
-	destruye(*lista_undo.lista[lista_undo.cont]);
+	
+	delete lista_undo.lista[lista_undo.cont - 1];
+	lista_undo.lista[lista_undo.cont - 1] = NULL;
 	lista_undo.cont--;
 }

@@ -15,7 +15,10 @@ int main() {
 	tListaUndo listaUndo;
 	inicio_juegos(listaJuegos, listaPos, listaUndo);
 
+
+	//return EXIT_SUCCESS;
 	_CrtDumpMemoryLeaks();
+
 	return 0;
 
 }
@@ -141,8 +144,9 @@ void undoJugada(tJuego& juego, tListaUndo& listaUndo) { //Deshace los movimiento
 	tListaPosiciones listaPos;
 	if (listaUndo.cont != 0) {
 		listaPos = ultimos_movimientos(listaUndo); //Llama a ultimos_movimientos de listaUndo.h
-		listaUndo.cont--;
-
+		
+		eliminar_ultimo(listaUndo); //Elimina la ultima lista_pos guardada en undo
+		
 		for (int i = 0; i < listaPos.cont; i++) {  //Recorre todas las jugadas de la lista de posiciones
 			int x = dame_posX(listaPos, i); //Llama a dame_posx de listaPosiciones.h para guardar la coordenada x en su variable
 			int y = dame_posY(listaPos, i); //Llama a dame_posy de listaPosiciones.h para guardar la coordenada y en su variable
