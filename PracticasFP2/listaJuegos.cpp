@@ -10,8 +10,8 @@ void inicializar(tListaJuegos& lista_juegos) {
 }
 
 void destruye(tListaJuegos& lista_juegos) {
-		while (lista_juegos.cont >= 0) {
-		delete lista_juegos.lista[lista_juegos.cont];
+		while (lista_juegos.cont > 0) {
+		delete lista_juegos.lista[lista_juegos.cont-1];
 		lista_juegos.cont--;
 		lista_juegos.capacidad++;
 	}
